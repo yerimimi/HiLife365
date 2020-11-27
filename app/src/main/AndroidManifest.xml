@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.hilifecare">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- Leak canary needs access to External storage to save heap dumps -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <uses-feature android:name="android.hardware.bluetooth_le" android:required="true"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
+    <application
+        android:hardwareAccelerated="false"
+        android:largeHeap="true"
+        android:name=".application.App"
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".ui.splash.SplashActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashStyle">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="a61b187ba82228313ff5594ee4caf7ab2cac6e20"
+            />
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MainStyle">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:label="@string/login_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/LoginStyle" />
+        <activity
+            android:name=".ui.signup.SignUpActivity"
+            android:label="@string/sign_up_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/SignUpStyle" />
+        <activity
+            android:name=".ui.leveltest.LevelTestActivity"
+            android:label="@string/level_test_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/LevelTestStyle" />
+        <activity
+            android:name=".ui.leveltest.LevelTestPlayingActivity"
+            android:label="@string/level_test_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/LevelTestStyle" />
+        <activity
+            android:name=".ui.preview.PreviewProgramActivity"
+            android:label="@string/preview_program_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/PreviewProgramStyle" />
+        <activity
+            android:name=".ui.exercise.ExerciseActivity"
+            android:label="@string/exercise_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/ExerciseStyle" />
+        <activity
+            android:name=".ui.program.ProgramActivity"
+            android:label="@string/program_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/ProgramStyle" />
+        <activity
+            android:name=".ui.plan.PlanDetailActivity"
+            android:label="@string/plan_detail_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/PlanDetailStyle" >
+            <intent-filter>
+            <action android:name="android.intent.action.VIEW"/>
+            <category android:name="android.intent.category.BROWSABLE"/>
+            <category android:name="android.intent.category.DEFAULT"/>
+            <data android:scheme="hilife365" android:host="plandetail"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.airbnb.deeplinkdispatch.DeepLinkActivity"
+            android:theme="@android:style/Theme.NoDisplay">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:host="plandetail" android:scheme="hilife365" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.program.ProgramConstructionActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ProgramConstructionStyle" />
+        <activity
+            android:name=".ui.leveltest.LevelTestResultActivity"
+            android:label="@string/level_test_result_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/LevelTestResultStyle" />
+        <activity
+            android:name=".ui.userdetailinfo.UserDetailInfoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/UserDetailInfoStyle" />
+        <activity
+            android:name=".ui.mypage.MyPageActivity"
+            android:label="@string/mypage_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyPageStyle" />
+        <activity
+            android:name=".ui.setting.SettingActivity"
+            android:label="@string/setting_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/SettingStyle" />
+        <activity
+            android:name=".ui.myrecord.MyRecordActivity"
+            android:label="@string/myrecord_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyRecordStyle" />
+        <activity
+            android:name=".ui.myrecord.CalorieActivity"
+            android:label="@string/calorie_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyRecordStyle" />
+        <activity
+            android:name=".ui.myrecord.HeartRateActivity"
+            android:label="@string/heartrate_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyRecordStyle" />
+        <activity
+            android:name=".ui.myrecord.StepCountActivity"
+            android:label="@string/stepcount_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyRecordStyle" />
+        <activity
+            android:name=".ui.myrecord.MyRecordDetailActivity"
+            android:label="@string/myrecord_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyRecordStyle" />
+        <activity android:name=".ui.myrecord.CalorieDetailActivity"
+            android:label="@string/calorie_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyRecordStyle"/>
+
+        <activity android:name=".ui.bluetooth.DeviceScanActivity"
+            android:label="@string/heartrate_title"/>
+        <activity android:name=".ui.bluetooth.DeviceControlActivity"/>
+        <service android:name=".ui.bluetooth.BluetoothLeService" android:enabled="true"/>
+    </application>
+
+</manifest>

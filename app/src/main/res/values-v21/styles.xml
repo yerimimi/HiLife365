@@ -1,0 +1,50 @@
+<resources>
+  <style name="AppTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/colorAccent</item>
+    <item name="android:windowBackground">@color/white</item>
+    <!--<item name="android:includeFontPadding">false</item>-->
+  </style>
+  <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light">
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/colorAccent</item>
+    <item name="windowActionBar">false</item>
+    <item name="windowNoTitle">true</item>
+    <item name="android:windowBackground">@color/white</item>
+    <!--<item name="android:includeFontPadding">false</item>-->
+  </style>
+  <style name="AppTheme.Dialog" parent="Theme.AppCompat.Light.Dialog">
+    <item name="windowActionBar">false</item>
+    <item name="windowNoTitle">true</item>
+  </style>
+  <style name="AppTheme.FullScreen" parent="Theme.AppCompat.Light">
+    <item name="windowNoTitle">true</item>
+    <item name="windowActionBar">false</item>
+    <item name="android:windowTranslucentStatus">true</item>
+    <!--<item name="android:windowFullscreen">true</item>-->
+    <item name="android:windowContentOverlay">@null</item>
+    <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+    <!--<item name="android:statusBarColor">@android:color/transparent</item>-->
+  </style>
+  <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+  <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+  <style name="AppTheme" parent="AppTheme.NoActionBar"/>
+  <style name="MainStyle" parent="AppTheme.FullScreen"/>
+  <style name="LoginStyle" parent="AppTheme.FullScreen"/>
+  <style name="SignUpStyle" parent="AppTheme"/>
+  <style name="PlanStyle" parent="AppTheme"/>
+  <style name="LevelTestStyle" parent="AppTheme"/>
+  <style name="ExerciseStyle" parent="AppTheme"/>
+  <style name="ProgramStyle" parent="AppTheme"/>
+  <style name="PlanDetailStyle" parent="AppTheme"/>
+  <style name="ExerciseListStyle" parent="AppTheme"/>
+  <style name="ProgramConstructionStyle" parent="AppTheme"/>
+  <style name="SplashStyle" parent="AppTheme"/>
+  <style name="LevelTestResultStyle" parent="AppTheme"/>
+  <style name="UserDetailInfoStyle" parent="AppTheme"/>
+  <style name="MyPageStyle" parent="AppTheme"></style>
+  <style name="SettingStyle" parent="AppTheme"></style>
+  <style name="MyRecordStyle" parent="AppTheme"></style>
+</resources>

@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="5"
+    android:id="@+id/playing_leveltest_view_background"
+    tools:ignore="MissingPrefix">
+
+    <!--<FrameLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/playing_progress_height"-->
+        <!--android:id="@+id/fake_frame"/>-->
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@+id/measure_container"
+        android:layout_weight="2.5">
+
+        <FrameLayout
+            android:id="@+id/exercise_ing_view"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent">
+
+            <SurfaceView
+                android:id="@+id/exercise_video"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="bottom"></SurfaceView>
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/measure_container">
+            <!--<include-->
+            <!--layout="@layout/view_leveltest_description"/>-->
+
+            <include layout="@layout/view_leveltest_subresult" />
+        </FrameLayout>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/next_exercise_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_below="@+id/exercise_ing_view"
+        android:layout_weight="1"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:id="@+id/prev_container"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:weightSum="2"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/screen_left_margin">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:layout_gravity="left"
+                android:text="PREV"
+                android:textSize="@dimen/text_pt_44"
+                android:textStyle="bold"
+                android:textColor="@color/colorPurpleBg"
+                android:id="@+id/prev"
+                fontPath="fonts/Aero-Matics-Display-Regular.ttf"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="left"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/dummy_image"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/prev_exercise_image"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:layout_gravity="left"
+                android:text="스쿼트"
+                android:textSize="@dimen/text_pt_42"
+                android:id="@+id/prev_exercise_name"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/next_container"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:weightSum="2"
+            android:orientation="vertical"
+            android:paddingRight="@dimen/screen_margin_right">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:layout_gravity="right"
+                android:text="NEXT"
+                android:textSize="@dimen/text_pt_44"
+                android:textStyle="bold"
+                android:textColor="@color/colorPurpleBg"
+                android:id="@+id/next"
+                fontPath="fonts/Aero-Matics-Display-Regular.ttf"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:layout_gravity="right"
+                android:src="@drawable/dummy_image"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/next_exercise_image"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:layout_gravity="right"
+                android:text="스쿼트"
+                android:textSize="@dimen/text_pt_42"
+                android:id="@+id/next_exercise_name"/>
+        </LinearLayout>
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_above="@+id/total_time"
+        android:layout_weight="0.5"
+        android:layout_marginLeft="@dimen/screen_left_margin"
+        android:layout_marginRight="@dimen/screen_left_margin">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:id="@+id/text"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24dp"
+            android:text="TOTAL TIME"
+            fontPath="fonts/Aero-Matics-Display-Regular.ttf"/>
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="21dp"
+            android:layout_gravity="bottom|right"
+            android:src="@drawable/sound_blue"
+            android:adjustViewBounds="true"
+            android:clickable="true"
+            android:id="@+id/sound_image"/>
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/total_time"
+        fontPath="fonts/Aero-Matics-Display-Regular.ttf"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_above="@+id/linearLayout"
+        android:layout_marginLeft="@dimen/screen_left_margin"
+        android:layout_weight="0.5"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:lineSpacingExtra="0dp"
+        android:text="00:00"
+        android:textColor="@color/colorPurpleBg"
+        android:textSize="@dimen/text_pt_166" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:id="@+id/linearLayout"
+        android:layout_weight="0.5"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:paddingBottom="@dimen/setting_text_margin_bottom"
+        android:paddingLeft="@dimen/screen_left_margin"
+        android:paddingRight="@dimen/screen_margin_right">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout2"
+            android:layout_gravity="center"
+            android:scrollbars="horizontal"
+            android:orientation="horizontal">
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right">
+            <TextView
+                android:visibility="invisible"
+                android:layout_width="70dp"
+                android:layout_height="29dp"
+                android:text="skip"
+                android:textSize="@dimen/text_pt_48"
+                android:textColor="@color/colorPurpleBg"
+                android:gravity="center"
+                android:background="@drawable/bg_skip"
+                android:id="@+id/skip_button"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

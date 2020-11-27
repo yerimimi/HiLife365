@@ -1,0 +1,191 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:weightSum="5"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="MissingPrefix">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/playing_video_container_height"
+        android:layout_weight="2"
+        android:id="@+id/exercise_ing_view"
+        android:layout_below="@+id/measure_container">
+        <SurfaceView
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="bottom"
+            android:id="@+id/exercise_video">
+        </SurfaceView>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/measure_container">
+            <include layout="@layout/view_preview_substart" />
+
+            <include layout="@layout/view_preview_end" />
+        </FrameLayout>
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/exercise_ing_view"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/prev_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/screen_left_margin"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/prev"
+                fontPath="fonts/Aero-Matics-Display-Regular.ttf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="PREV"
+                android:textColor="@color/colorOrangeBt"
+                android:textSize="@dimen/text_pt_44"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/prev_exercise_image"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/dummy_image" />
+
+            <TextView
+                android:id="@+id/prev_exercise_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="스쿼트" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/next_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:orientation="vertical"
+            android:layout_marginRight="@dimen/screen_margin_right">
+
+            <TextView
+                android:id="@+id/next"
+                fontPath="fonts/Aero-Matics-Display-Regular.ttf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginTop="3dp"
+                android:text="NEXT"
+                android:textColor="@color/colorOrangeBt"
+                android:textSize="@dimen/text_pt_44"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/next_exercise_image"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="right"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/dummy_image" />
+
+            <TextView
+                android:id="@+id/next_exercise_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="스쿼트" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/total_time"
+        android:layout_weight="0.5"
+        android:layout_marginLeft="@dimen/screen_left_margin"
+        android:layout_marginRight="@dimen/screen_left_margin">
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="TOTAL TIME"
+            android:textColor="@color/colorSidePrimary"
+            android:textSize="24dp" />
+
+        <ImageView
+            android:id="@+id/sound_image"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:adjustViewBounds="true"
+            android:clickable="true"
+            android:src="@drawable/sound_green" />
+    </FrameLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayout"
+        android:id="@+id/total_time"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:layout_marginLeft="@dimen/screen_left_margin"
+        android:textColor="@color/colorOrangeBt"
+        android:textSize="@dimen/text_pt_215"
+        android:text="00:00"
+        fontPath="fonts/Aero-Matics-Display-Regular.ttf"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="0.5"
+        android:gravity="center"
+        android:paddingRight="@dimen/screen_margin_right"
+        android:paddingLeft="@dimen/screen_left_margin"
+        android:paddingBottom="@dimen/setting_text_margin_bottom">
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:scrollbars="horizontal"></LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right">
+
+            <TextView
+                android:id="@+id/warm_up_skip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorGreenBg"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Warm-up Skip"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

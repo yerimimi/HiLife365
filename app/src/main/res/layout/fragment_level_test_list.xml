@@ -1,0 +1,129 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.hilifecare.ui.leveltest.LevelTestListFragment"
+    tools:ignore="MissingPrefix">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/linearLayout1"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HI LIFE CARE LEVEL TEST"
+            fontPath="fonts/Aero-Matics-Display-Bold.ttf"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:layout_marginBottom="5dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/icon_clock"/>
+            <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/level_test_time_min"
+            android:text="0"
+            android:layout_gravity="bottom"
+            android:textSize="20dp"
+            android:textColor="@color/colorPurpleBg"
+            fontPath="fonts/Aero-Matics-Display-Regular.ttf"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MIN"
+                android:layout_gravity="bottom"
+                android:textColor="@color/colorPurpleBg"
+                fontPath="fonts/Aero-Matics-Display-Regular.ttf"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/level_test_time_sec"
+                android:text="0"
+                android:layout_marginLeft="3dp"
+                android:layout_gravity="bottom"
+                android:textSize="20dp"
+                android:textColor="@color/colorPurpleBg"
+                fontPath="fonts/Aero-Matics-Display-Regular.ttf"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SEC"
+                android:layout_gravity="bottom"
+                android:textColor="@color/colorPurpleBg"
+                fontPath="fonts/Aero-Matics-Display-Regular.ttf"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="정확한 동작을 숙지하신후 시작해 보세요"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/linearLayout2"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_above="@+id/linearLayout3">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/leveltest_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="LinearLayoutManager"
+            tools:context="com.hilifecare.ui.leveltest.LevelTestActivity"
+            tools:listitem="@layout/level_test_item" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout3"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="8dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="레벨측정기준"
+            android:textSize="@dimen/text_pt_60"
+            android:background="@drawable/bg_setting"
+            android:id="@+id/leveltest_guideline_button"
+            android:layout_margin="10dp"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Test Start"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_pt_72"
+            android:background="@drawable/bg_button"
+            android:id="@+id/leveltest_start_button"
+            android:layout_margin="10dp"
+            fontPath="fonts/Aero-Matics-Display-Regular.ttf"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
