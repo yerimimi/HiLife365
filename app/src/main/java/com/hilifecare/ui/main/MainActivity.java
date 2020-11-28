@@ -36,6 +36,7 @@ import com.hilifecare.ui.plan.PlanDetailActivity;
 import com.hilifecare.ui.plan.PlanFragment;
 import com.hilifecare.ui.setting.SettingActivity;
 import com.hilifecare.ui.view.CustomToolbar;
+import com.hilifecare.util.logging.Stopwatch;
 
 import java.util.ArrayList;
 
@@ -74,6 +75,10 @@ public class MainActivity extends BaseActivity<MainPresenter>
     Fragment fragment = null;
     ArrayList<Exercise> exerciseArrayList = new ArrayList<>();
     ArrayList<Plan> planArrayList = new ArrayList<>();
+
+
+    Stopwatch stopwatch = new Stopwatch();
+
 
     protected void injectModule() {
         component = DaggerMainComponent.builder()
@@ -156,30 +161,35 @@ public class MainActivity extends BaseActivity<MainPresenter>
 
     @OnClick(R.id.toolbar_left)
     void goBack(){
+        stopwatch.reset();
         if(fragment instanceof MainFragment){
             onBackPressed();
+            stopwatch.printLog("toolbar_left");
         }else{
             setFragment(new MainFragment(), "");
             goFragment(fragment);
+            stopwatch.printLog("toolbar_left");
         }
     }
 
     private View.OnClickListener setting_click_listener = v -> {
-                if(isAnonymous) {
+        stopwatch.reset();
+        if(isAnonymous) {
 
                 } else {
                     Intent i = new Intent(getApplicationContext(), SettingActivity.class);
                     i.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                     startActivity(i);
-                }
+            stopwatch.printLog("setting_click_listener");
+        }
             };
 
     private View.OnClickListener login_logout_click_listener = v -> {
-                if(isAnonymous) {
+        if(isAnonymous) {
                     Intent i = new Intent(getApplication(), LoginActivity.class);
                     i.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                     startActivity(i);
-                } else {
+        } else {
                     Toast.makeText(getApplicationContext(), "로그아웃",
                             Toast.LENGTH_SHORT).show();
                     FirebaseAuth.getInstance().signOut();
@@ -188,12 +198,14 @@ public class MainActivity extends BaseActivity<MainPresenter>
             };
 
     private View.OnClickListener my_page_click_listener = v -> {
+        stopwatch.reset();
                 if(isAnonymous) {
 
                 } else {
                     Intent i = new Intent(getApplicationContext(), MyPageActivity.class);
                     i.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                     startActivity(i);
+                    stopwatch.printLog("my_page_click_listener");
                 }
             };
 
@@ -211,18 +223,23 @@ public class MainActivity extends BaseActivity<MainPresenter>
                 }
                 break;
             case R.id.exercise_program:
+                stopwatch.reset();
                 setFragment(new PlanFragment(), "운동 프로그램");
+                stopwatch.printLog("PlanFragment");
                 break;
             case R.id.basic_exercise_fragment:
                 //db작업
+                stopwatch.reset();
                 flag = 1;
                 progressDialog = new ProgressDialog(this);
                 progressDialog.setMessage("Loading...");
                 progressDialog.show();
                 setFragment(new IndividualExerciseFragment(), "운동 영상");
                 mainPresenter.getExercise(this, progressDialog, fragment);
+                stopwatch.printLog("IndividualExerciseFragment");
                 break;
             case R.id.my_record_fragment:
+                stopwatch.reset();
                 if(getmDeviceAddress() == null) {
                     progressDialog = new ProgressDialog(this);
                     progressDialog.setMessage("Loading...");
@@ -230,6 +247,7 @@ public class MainActivity extends BaseActivity<MainPresenter>
                     mainPresenter.getSmartBandAddress(this, progressDialog);
                 }
                 setFragment(new MyRecordFragment(), "나의 기록");
+                stopwatch.printLog("MyRecordFragment");
                 break;
         }
 

@@ -17,6 +17,8 @@ import javax.inject.Inject;
 import butterknife.Bind;
 import butterknife.OnClick;
 import timber.log.Timber;
+import com.hilifecare.util.logging.Stopwatch;
+
 
 /**
  * Created by imcreator on 2017. 4. 17..
@@ -32,6 +34,7 @@ public class SettingActivity extends BaseActivity<SettingPresenter> implements S
     TextView toolbarName;
     @Bind(R.id.version)
     TextView version;
+    Stopwatch stopwatch = new Stopwatch();
 
     @Override
     public SettingComponent getComponent() {return settingComponent;}
@@ -69,7 +72,9 @@ public class SettingActivity extends BaseActivity<SettingPresenter> implements S
 
     @OnClick(R.id.toolbar_left)
     void goBack(){
+        stopwatch.reset();
         finish();
+        stopwatch.printLog("toolbar_left");
     }
 
     @OnClick(R.id.contract)

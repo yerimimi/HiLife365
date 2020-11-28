@@ -10,10 +10,13 @@ import com.hilifecare.model.UserInfo;
 import com.hilifecare.ui.base.BaseFragment;
 import com.hilifecare.ui.base.EmptyPresenter;
 import com.hilifecare.ui.leveltest.LevelTestActivity;
+import com.hilifecare.util.logging.Stopwatch;
 
 import butterknife.OnClick;
 
 public class MainFragment extends BaseFragment<EmptyPresenter> {
+
+    Stopwatch stopwatch = new Stopwatch();
 
     @Override
     protected void inject() {
@@ -40,10 +43,12 @@ public class MainFragment extends BaseFragment<EmptyPresenter> {
     //    @OnClick({R.id.leveltest_button, R.id.program_button})
     @OnClick(R.id.leveltest_button)
     public void onClick(View v){
+        stopwatch.reset();
         switch (v.getId()){
             case R.id.leveltest_button:
                 Intent i = new Intent(getContext(), LevelTestActivity.class);
                 startActivity(i);
+                stopwatch.printLog("LevelTestActivity");
                 break;
 //            case R.id.program_button:
 //                break;

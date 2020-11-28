@@ -25,6 +25,8 @@ import javax.inject.Inject;
 import butterknife.Bind;
 import butterknife.OnClick;
 import nucleus.factory.PresenterFactory;
+import com.hilifecare.util.logging.Stopwatch;
+
 
 @ActivityScope
 public class
@@ -46,6 +48,9 @@ LevelTestListFragment.OnFragmentInteractionListener{
     TextView toolbarName;
     @Bind(R.id.toolbar_right)
     ImageView toolbarRight;
+
+    Stopwatch stopwatch = new Stopwatch();
+
 
     public static Context mContext;
     private Fragment fragment;
@@ -94,7 +99,9 @@ LevelTestListFragment.OnFragmentInteractionListener{
 
     @OnClick(R.id.toolbar_left)
     void onBack(){
+        stopwatch.reset();
         onBackPressed();
+        stopwatch.printLog("toolbar_left");
     }
 
     @Override

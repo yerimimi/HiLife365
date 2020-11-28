@@ -51,6 +51,9 @@ import javax.inject.Inject;
 
 import nucleus.factory.PresenterFactory;
 
+import com.hilifecare.util.logging.Stopwatch;
+
+
 /**
  * For a given BLE device, this Activity provides the user interface to connect, display data,
  * and display GATT services and characteristics supported by the device.  The Activity
@@ -83,6 +86,7 @@ public class DeviceControlActivity extends BaseActivity<DeviceControlPresenter> 
     private final String LIST_NAME = "NAME";
     private final String LIST_UUID = "UUID";
 
+    Stopwatch stopwatch = new Stopwatch();
 
     @Override
     protected void injectModule() {

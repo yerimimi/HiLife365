@@ -28,6 +28,9 @@ import butterknife.Bind;
 import butterknife.OnClick;
 import nucleus.factory.PresenterFactory;
 
+import com.hilifecare.util.logging.Stopwatch;
+
+
 @ActivityScope
 public class MyPageActivity extends BaseActivity<MyPagePresenter> implements MyPageView, HasComponent<MyPageComponent> {
 
@@ -50,6 +53,8 @@ public class MyPageActivity extends BaseActivity<MyPagePresenter> implements MyP
 
     ProgressDialog pDialog;
     UserInfo userInfo = new UserInfo();
+
+    Stopwatch stopwatch = new Stopwatch();
 
     protected void injectModule() {
         myPageComponent = DaggerMyPageComponent.builder().applicationComponent(App.get(this).getComponent()).myPageModule(new MyPageModule(this)).build();
@@ -95,7 +100,9 @@ public class MyPageActivity extends BaseActivity<MyPagePresenter> implements MyP
 
     @OnClick(R.id.toolbar_left)
     void goBack(){
+        stopwatch.reset();
         finish();
+        stopwatch.printLog("toolbar_left");
     }
 
     @OnClick({R.id.plan_reset_button, R.id.user_change_info_button, R.id.conn_bluetooth})
