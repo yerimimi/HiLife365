@@ -101,7 +101,7 @@ public class Stopwatch {
     }
 
     public void printLog(String title){
-        Log.d(TAG, title+" elapsed time: " + getElapsedTimeString());
+        Log.i(TAG, title+" elapsed time: " + getElapsedTimeString());
 
     }
 }

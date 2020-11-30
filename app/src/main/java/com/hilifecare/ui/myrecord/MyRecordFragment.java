@@ -56,13 +56,11 @@ public class MyRecordFragment extends Fragment{
 
     @Override
     public void onStart() {
-        stopwatch.printLog("MyRecordFragment");
         super.onStart();
     }
 
     @Override
     public void onPause(){
-        stopwatch.reset();
         super.onPause();
     }
 
