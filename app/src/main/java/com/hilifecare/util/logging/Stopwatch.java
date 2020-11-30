@@ -80,12 +80,11 @@ public class Stopwatch {
         startRealtimeMillis = SystemClock.elapsedRealtime();
         startUptimeMillis = SystemClock.uptimeMillis();
     }
-
-
+    
     public ElapsedTime getElapsedTime() {
         return new ElapsedTime(this);
     }
-    
+
     public String getElapsedTimeString() {
         double seconds = (double)getElapsedTime().getElapsedRealtimeMillis() / 1000.0;
         if (seconds < 1.0) {
