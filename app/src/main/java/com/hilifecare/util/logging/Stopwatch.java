@@ -15,9 +15,6 @@ public class Stopwatch {
     private long startRealtimeMillis;
     private long startUptimeMillis;
 
-    /**
-     * Result of Stopwatch.getElapsedTime()
-     */
     public static class ElapsedTime {
         private final long elapsedThreadMillis;
         private final long elapsedRealtimeMillis;
@@ -73,40 +70,22 @@ public class Stopwatch {
         }
     }
 
-    /**
-     * Constructor
-     */
     public Stopwatch() {
         reset();
     }
 
 
-    /**
-     * Set stopwatch's start time to the current time
-     */
     public void reset() {
         startThreadMillis = SystemClock.currentThreadTimeMillis();
         startRealtimeMillis = SystemClock.elapsedRealtime();
         startUptimeMillis = SystemClock.uptimeMillis();
     }
 
-    /**
-     * Get elapsed time since construction or last call to reset()
-     *
-     * @return Stopwatch.ElapsedTime
-     */
+
     public ElapsedTime getElapsedTime() {
         return new ElapsedTime(this);
     }
-
-    /**
-     * Get elapsed time as a human-readable string
-     *
-     * If time is less than one second, it will be rendered as a number of milliseconds.
-     * Otherwise, it will be rendered as a number of seconds.
-     *
-     * @return String
-     */
+    
     public String getElapsedTimeString() {
         double seconds = (double)getElapsedTime().getElapsedRealtimeMillis() / 1000.0;
         if (seconds < 1.0) {
