@@ -100,9 +100,7 @@ public class MyPageActivity extends BaseActivity<MyPagePresenter> implements MyP
 
     @OnClick(R.id.toolbar_left)
     void goBack(){
-        stopwatch.reset();
         finish();
-        stopwatch.printLog("toolbar_left");
     }
 
     @OnClick({R.id.plan_reset_button, R.id.user_change_info_button, R.id.conn_bluetooth})
@@ -167,5 +165,17 @@ public class MyPageActivity extends BaseActivity<MyPagePresenter> implements MyP
     @Override
     public void onSignOutSuccess() {
         Toast.makeText(this, "로그아웃 완료하였습니다.", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onStart() {
+        stopwatch.printLog("MyPage"); // 다른 화면이 나타날 때
+        super.onStart();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        stopwatch.reset(); // 현재 화면이 없어질 때
     }
 }

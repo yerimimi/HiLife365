@@ -39,6 +39,7 @@ import com.hilifecare.di.modules.MyRecordDetailModule;
 import com.hilifecare.di.modules.MyRecordModule;
 import com.hilifecare.ui.base.BaseActivity;
 import com.hilifecare.ui.view.CustomToolbar;
+import com.hilifecare.util.logging.Stopwatch;
 
 import java.util.ArrayList;
 
@@ -99,6 +100,9 @@ public class MyRecordDetailActivity extends BaseActivity<MyRecordDetailPresenter
     View plus2;
     @Bind(R.id.percent_plus_3)
     View plus3;
+
+    Stopwatch stopwatch = new Stopwatch();
+
 
 
     protected void injectModule() {
@@ -206,5 +210,17 @@ public class MyRecordDetailActivity extends BaseActivity<MyRecordDetailPresenter
     @Override
     public MyRecordDetailComponent getComponent() {
         return myRecordComponent;
+    }
+
+    @Override
+    protected void onStart() {
+        stopwatch.printLog("MyRecordDetailActivity"); // 다른 화면이 나타날 때
+        super.onStart();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        stopwatch.reset(); // 현재 화면이 없어질 때
     }
 }

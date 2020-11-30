@@ -20,6 +20,7 @@ import com.hilifecare.model.LevelTest;
 import com.hilifecare.ui.base.BaseActivity;
 import com.hilifecare.ui.view.CustomDialog;
 import com.hilifecare.ui.view.PlayingLevelTestView;
+import com.hilifecare.util.logging.Stopwatch;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,6 +43,9 @@ implements LevelTestPlayingView,HasComponent<LevelTestPlayingComponent>{
     PlayingLevelTestView playingView;
     ArrayList<LevelTest> levelTestArrayList;
 
+    Stopwatch stopwatch = new Stopwatch();
+
+
     LevelTestPlayingComponent levelTestPlayingComponent;
     private int positionState;
     private long timerState;
@@ -57,11 +61,6 @@ implements LevelTestPlayingView,HasComponent<LevelTestPlayingComponent>{
         Intent intent = getIntent();
         levelTestArrayList = (ArrayList<LevelTest>)intent.getSerializableExtra("LevelTestData");
         super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
     }
 
     @Override
@@ -184,5 +183,17 @@ implements LevelTestPlayingView,HasComponent<LevelTestPlayingComponent>{
 
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction();
+    }
+
+    @Override
+    protected void onStart() {
+        stopwatch.printLog("LevelTestPlayingActivity"); // 다른 화면이 나타날 때
+        super.onStart();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        stopwatch.reset(); // 현재 화면이 없어질 때
     }
 }

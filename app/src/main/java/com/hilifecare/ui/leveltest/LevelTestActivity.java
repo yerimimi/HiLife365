@@ -99,9 +99,7 @@ LevelTestListFragment.OnFragmentInteractionListener{
 
     @OnClick(R.id.toolbar_left)
     void onBack(){
-        stopwatch.reset();
         onBackPressed();
-        stopwatch.printLog("toolbar_left");
     }
 
     @Override
@@ -127,5 +125,23 @@ LevelTestListFragment.OnFragmentInteractionListener{
     public void setTitle(String title){
         this.toolbarName.setText(title);
     }
+
+    @Override
+    protected void onStart() {
+        stopwatch.printLog("LevelTestActivity"); // 다른 화면이 나타날 때
+        super.onStart();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        stopwatch.reset(); // 현재 화면이 없어질 때
+    }
+
+    /*@Override
+    protected void o() {
+        super.onStop();
+        stopwatch.reset(); // 현재 화면이 없어질 때
+    }*/
 
 }

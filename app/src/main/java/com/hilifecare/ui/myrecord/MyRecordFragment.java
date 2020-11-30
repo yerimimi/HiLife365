@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hilifecare.R;
+import com.hilifecare.util.logging.Stopwatch;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -18,6 +19,8 @@ import butterknife.OnClick;
  */
 
 public class MyRecordFragment extends Fragment{
+
+    Stopwatch stopwatch = new Stopwatch();
 
     public MyRecordFragment() {
 
@@ -50,4 +53,17 @@ public class MyRecordFragment extends Fragment{
     void goLevelTestResult() {
         startActivity(new Intent(getContext(), MyRecordActivity.class));
     }
+
+    @Override
+    public void onStart() {
+        stopwatch.printLog("MyRecordFragment");
+        super.onStart();
+    }
+
+    @Override
+    public void onPause(){
+        stopwatch.reset();
+        super.onPause();
+    }
+
 }

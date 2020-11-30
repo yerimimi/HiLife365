@@ -23,6 +23,7 @@ import com.hilifecare.di.modules.LoginModule;
 import com.hilifecare.ui.base.BaseActivity;
 import com.hilifecare.ui.signup.SignUpActivity;
 import com.hilifecare.ui.view.CustomDialog;
+import com.hilifecare.util.logging.Stopwatch;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.iconics.IconicsDrawable;
 
@@ -57,6 +58,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     @Bind(R.id.progress)
     ProgressBar progressBar;
 
+    Stopwatch stopwatch = new Stopwatch();
+
+
     protected void injectModule() {
         loginComponent = DaggerLoginComponent.builder()
                 .applicationComponent(App.get(this).getComponent())
@@ -66,11 +70,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
     public PresenterFactory<LoginPresenter> getPresenterFactory() {
         return () -> loginPresenter;
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
     }
 
     protected int getLayoutResource() {
@@ -162,5 +161,17 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     @Override
     public void setPasswordErrorText(String text) {
         pw_edittext.setError(text);
+    }
+
+    @Override
+    protected void onStart() {
+        stopwatch.printLog("LoginActivity"); // 다른 화면이 나타날 때
+        super.onStart();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        stopwatch.reset(); // 현재 화면이 없어질 때
     }
 }

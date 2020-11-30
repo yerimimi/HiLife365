@@ -20,6 +20,7 @@ import com.hilifecare.di.ActivityScope;
 import com.hilifecare.di.components.LevelTestComponent;
 import com.hilifecare.model.LevelTest;
 import com.hilifecare.ui.base.BaseFragment;
+import com.hilifecare.util.logging.Stopwatch;
 
 import java.util.ArrayList;
 
@@ -51,6 +52,8 @@ public class LevelTestListFragment extends BaseFragment<LevelTestListPresenter> 
     @Bind(R.id.leveltest_start_button)
     Button leveltest_start_button;
     private RecyclerView guideline_listview;
+
+    Stopwatch stopwatch = new Stopwatch();
 
     LevelTestAdapter levelTestAdapter;
     LevelTestGuidelineAdapter levelTestGuidelineAdapter;
@@ -182,5 +185,16 @@ public class LevelTestListFragment extends BaseFragment<LevelTestListPresenter> 
 
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(int where, Object test);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    public void onPause(){
+        stopwatch.reset();
+        super.onPause();
     }
 }

@@ -21,6 +21,7 @@ import com.hilifecare.di.modules.LevelTestResultModule;
 import com.hilifecare.ui.base.BaseActivity;
 import com.hilifecare.ui.main.MainActivity;
 import com.hilifecare.ui.view.CustomToolbar;
+import com.hilifecare.util.logging.Stopwatch;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -50,6 +51,9 @@ public class LevelTestResultActivity extends BaseActivity<LevelTestResultPresent
     ImageView resultLevelImage;
     @Bind(R.id.leveltest_result_level)
     TextView resultLevel;
+
+    Stopwatch stopwatch = new Stopwatch();
+
 
     ProgressDialog pDialog;
 
@@ -145,5 +149,17 @@ public class LevelTestResultActivity extends BaseActivity<LevelTestResultPresent
     @Override
     public LevelTestResultComponent getComponent() {
         return levelTestResultComponent;
+    }
+
+    @Override
+    protected void onStart() {
+        stopwatch.printLog("LevelTestPlayingActivity"); // 다른 화면이 나타날 때
+        super.onStart();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        stopwatch.reset(); // 현재 화면이 없어질 때
     }
 }

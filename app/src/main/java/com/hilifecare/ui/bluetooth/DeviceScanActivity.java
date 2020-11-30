@@ -43,6 +43,7 @@ import android.widget.Toast;
 import com.hilifecare.R;
 
 import java.util.ArrayList;
+import com.hilifecare.util.logging.Stopwatch;
 
 /**
  * Activity for scanning and displaying available Bluetooth LE devices.
@@ -53,6 +54,9 @@ public class DeviceScanActivity extends ListActivity {
     private boolean mScanning;
     private Handler mHandler;
     int conn_flag = 0;
+
+    Stopwatch stopwatch = new Stopwatch();
+
 
     private static final int PERMISSION_REQUEST_COARSE_LOCATION = 1;
     private static final int REQUEST_ENABLE_BT = 1;
@@ -196,6 +200,7 @@ public class DeviceScanActivity extends ListActivity {
         super.onPause();
         scanLeDevice(false);
         mLeDeviceListAdapter.clear();
+        stopwatch.reset();
     }
 
     @Override
@@ -320,4 +325,11 @@ public class DeviceScanActivity extends ListActivity {
         TextView deviceName;
         TextView deviceAddress;
     }
+
+    @Override
+    protected void onStart() {
+        stopwatch.printLog("DeviceScanActivity"); // 다른 화면이 나타날 때
+        super.onStart();
+    }
+
 }

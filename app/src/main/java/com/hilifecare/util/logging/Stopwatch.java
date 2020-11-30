@@ -11,9 +11,9 @@ public class Stopwatch {
 
     public static String TAG = "ElapsedTime";
 
-    private long startThreadMillis;
-    private long startRealtimeMillis;
-    private long startUptimeMillis;
+    private static long startThreadMillis;
+    private static long startRealtimeMillis;
+    private static long startUptimeMillis;
 
     public static class ElapsedTime {
         private final long elapsedThreadMillis;

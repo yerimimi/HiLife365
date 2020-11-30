@@ -18,6 +18,7 @@ import com.hilifecare.di.components.UserDetailInfoComponent;
 import com.hilifecare.di.modules.UserDetailInfoModule;
 import com.hilifecare.model.UserInfo;
 import com.hilifecare.ui.base.BaseActivity;
+import com.hilifecare.util.logging.Stopwatch;
 
 import javax.inject.Inject;
 
@@ -59,6 +60,9 @@ public class UserDetailInfoActivity extends BaseActivity<UserDetailInfoPresenter
     private PopupWindow popupWindow;
     private UserDetailQnAView qnaView;
     UserInfo userInfo = new UserInfo();
+
+    Stopwatch stopwatch = new Stopwatch();
+
 
     protected void injectModule() {
         userDetailInfoComponent = DaggerUserDetailInfoComponent.builder().applicationComponent(App.get(this).getComponent()).userDetailInfoModule(new UserDetailInfoModule(this)).build();
@@ -174,6 +178,19 @@ public class UserDetailInfoActivity extends BaseActivity<UserDetailInfoPresenter
         return userDetailInfoComponent;
     }
 
-    
+    @Override
+    protected void onStart() {
+        stopwatch.printLog("UserDetailInfoActivity"); // 다른 화면이 나타날 때
+        super.onStart();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        stopwatch.reset(); // 현재 화면이 없어질 때
+    }
+
+
+
 
 }

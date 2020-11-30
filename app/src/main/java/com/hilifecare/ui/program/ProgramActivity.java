@@ -23,6 +23,7 @@ import com.hilifecare.di.modules.ProgramModule;
 import com.hilifecare.model.Program;
 import com.hilifecare.ui.base.BaseActivity;
 import com.hilifecare.ui.exercise.ExerciseActivity;
+import com.hilifecare.util.logging.Stopwatch;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -64,6 +65,9 @@ public class ProgramActivity extends BaseActivity<ProgramPresenter> implements P
 
     private HashMap<String, Integer> info_program = new HashMap<String, Integer>();
     private int init_flag;
+
+    Stopwatch stopwatch = new Stopwatch();
+
 
     @Inject
     ArrayList<Program> program;
@@ -177,5 +181,17 @@ public class ProgramActivity extends BaseActivity<ProgramPresenter> implements P
             play_time += p.getPlay_tiem();
         }
         program_time.setText(String.valueOf(play_time/60));
+    }
+
+    @Override
+    protected void onStart() {
+        stopwatch.printLog("ProgramActivity"); // 다른 화면이 나타날 때
+        super.onStart();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        stopwatch.reset(); // 현재 화면이 없어질 때
     }
 }

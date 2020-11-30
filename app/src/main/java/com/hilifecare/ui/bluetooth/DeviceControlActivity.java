@@ -355,4 +355,16 @@ public class DeviceControlActivity extends BaseActivity<DeviceControlPresenter> 
     public DeviceControlComponent getComponent() {
         return deviceControlComponent;
     }
+
+    @Override
+    protected void onStart() {
+        stopwatch.printLog("DeviceControlActivity"); // 다른 화면이 나타날 때
+        super.onStart();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        stopwatch.reset(); // 현재 화면이 없어질 때
+    }
 }

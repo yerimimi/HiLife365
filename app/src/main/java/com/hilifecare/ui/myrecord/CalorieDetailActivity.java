@@ -19,6 +19,7 @@ import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.hilifecare.R;
 import com.hilifecare.ui.view.CustomToolbar;
+import com.hilifecare.util.logging.Stopwatch;
 
 import java.util.ArrayList;
 
@@ -35,6 +36,8 @@ public class CalorieDetailActivity extends AppCompatActivity {
     @Bind(R.id.calorie_graph)
     BarChart mChart;
     private Typeface mTfLight;
+
+    Stopwatch stopwatch = new Stopwatch();
 
     @CallSuper
     @Override
@@ -161,5 +164,17 @@ public class CalorieDetailActivity extends AppCompatActivity {
     @OnClick(R.id.toolbar_left)
     void goBack(){
         finish();
+    }
+
+    @Override
+    protected void onStart() {
+        stopwatch.printLog("CalorieDetailActivity"); // 다른 화면이 나타날 때
+        super.onStart();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        stopwatch.reset(); // 현재 화면이 없어질 때
     }
 }

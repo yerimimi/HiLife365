@@ -43,15 +43,24 @@ public class MainFragment extends BaseFragment<EmptyPresenter> {
     //    @OnClick({R.id.leveltest_button, R.id.program_button})
     @OnClick(R.id.leveltest_button)
     public void onClick(View v){
-        stopwatch.reset();
         switch (v.getId()){
             case R.id.leveltest_button:
                 Intent i = new Intent(getContext(), LevelTestActivity.class);
                 startActivity(i);
-                stopwatch.printLog("LevelTestActivity");
                 break;
 //            case R.id.program_button:
 //                break;
         }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    public void onPause(){
+        stopwatch.reset();
+        super.onPause();
     }
 }

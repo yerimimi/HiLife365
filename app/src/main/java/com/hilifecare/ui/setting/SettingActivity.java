@@ -72,9 +72,7 @@ public class SettingActivity extends BaseActivity<SettingPresenter> implements S
 
     @OnClick(R.id.toolbar_left)
     void goBack(){
-        stopwatch.reset();
         finish();
-        stopwatch.printLog("toolbar_left");
     }
 
     @OnClick(R.id.contract)
@@ -85,6 +83,18 @@ public class SettingActivity extends BaseActivity<SettingPresenter> implements S
     @OnClick(R.id.privacy)
     void showPrivacy() {
         //TODO: 개인정보이용내역 보여주기
+    }
+
+    @Override
+    protected void onStart() {
+        stopwatch.printLog("SettingActivity"); // 다른 화면이 나타날 때
+        super.onStart();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        stopwatch.reset(); // 현재 화면이 없어질 때
     }
 
 

@@ -22,6 +22,7 @@ import com.hilifecare.model.UserInfo;
 import com.hilifecare.ui.base.BaseFragment;
 import com.hilifecare.ui.main.MainActivity;
 import com.hilifecare.ui.plan.PlanAddActivity;
+import com.hilifecare.util.logging.Stopwatch;
 
 import java.util.ArrayList;
 
@@ -53,6 +54,8 @@ public class PlanFragment extends BaseFragment<PlanPresenter> implements PlanVie
 
     ProgressDialog pDialog;
     UserInfo userInfo;
+
+    Stopwatch stopwatch = new Stopwatch();
 
     public PlanFragment() {
     }
@@ -154,4 +157,16 @@ public class PlanFragment extends BaseFragment<PlanPresenter> implements PlanVie
         ((MainActivity)getActivity()).setFragment(fragment, "플랜 추가하기");
         ((MainActivity)getActivity()).goFragment();
     }*/
+
+    @Override
+    public void onStart() {
+        stopwatch.printLog("PlanFragment");
+        super.onStart();
+    }
+
+    @Override
+    public void onPause(){
+        stopwatch.reset();
+        super.onPause();
+    }
 }

@@ -14,6 +14,7 @@ import com.hilifecare.di.components.ProgramConstructionComponent;
 import com.hilifecare.di.modules.ProgramConstructionModule;
 import com.hilifecare.model.Program;
 import com.hilifecare.ui.base.BaseActivity;
+import com.hilifecare.util.logging.Stopwatch;
 
 import java.util.ArrayList;
 
@@ -39,6 +40,9 @@ public class ProgramConstructionActivity extends BaseActivity<ProgramConstructio
     private ArrayList<String> mGroupList = null;
     private ArrayList<ArrayList<String>> mChildList = null;
     private ArrayList<String> mChildListContent = null;
+
+    Stopwatch stopwatch = new Stopwatch();
+
 
     protected void injectModule() {
         programConstructionComponent = DaggerProgramConstructionComponent.builder().applicationComponent(App.get(this).getComponent()).programConstructionModule(new ProgramConstructionModule(this)).build();
@@ -89,6 +93,18 @@ public class ProgramConstructionActivity extends BaseActivity<ProgramConstructio
     @Override
     public ProgramConstructionComponent getComponent() {
         return programConstructionComponent;
+    }
+
+    @Override
+    protected void onStart() {
+        stopwatch.printLog("ProgramConstructionActivity"); // 다른 화면이 나타날 때
+        super.onStart();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        stopwatch.reset(); // 현재 화면이 없어질 때
     }
 
 

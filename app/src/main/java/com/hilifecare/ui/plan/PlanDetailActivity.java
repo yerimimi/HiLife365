@@ -28,6 +28,7 @@ import com.hilifecare.ui.base.BaseActivity;
 import com.hilifecare.ui.exercise.ExerciseActivity;
 import com.hilifecare.ui.program.ProgramAdapter;
 import com.hilifecare.ui.view.CustomDialog;
+import com.hilifecare.util.logging.Stopwatch;
 
 import java.util.ArrayList;
 
@@ -67,6 +68,9 @@ public class PlanDetailActivity extends BaseActivity<PlanDetailPresenter> implem
     ProgressDialog pDialog;
     ArrayList<Program> programArrayList = new ArrayList<Program>();
     ArrayList<Plan> planArrayList = new ArrayList<>();
+
+    Stopwatch stopwatch = new Stopwatch();
+
 
     protected void injectModule() {
         planDetailComponent = DaggerPlanDetailComponent.builder()
@@ -206,5 +210,17 @@ public class PlanDetailActivity extends BaseActivity<PlanDetailPresenter> implem
 
         plan = planArrayList.get(0);
         setView();
+    }
+
+    @Override
+    protected void onStart() {
+        stopwatch.printLog("PlanDetailActivity"); // 다른 화면이 나타날 때
+        super.onStart();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        stopwatch.reset(); // 현재 화면이 없어질 때
     }
 }

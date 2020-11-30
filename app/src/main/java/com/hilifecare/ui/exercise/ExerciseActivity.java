@@ -19,6 +19,7 @@ import com.hilifecare.model.Program;
 import com.hilifecare.ui.base.BaseActivity;
 import com.hilifecare.ui.view.CustomToolbar;
 import com.hilifecare.ui.view.PlayingExerciseView;
+import com.hilifecare.util.logging.Stopwatch;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -49,6 +50,9 @@ public class ExerciseActivity extends BaseActivity<ExercisePresenter> implements
 
     private int positionState;
     private long timerState;
+
+    Stopwatch stopwatch = new Stopwatch();
+
 
 //    public PresenterFactory<ExercisePresenter> getPresenterFactory() {
 //        return () -> exercisePresenter;
@@ -146,10 +150,6 @@ public class ExerciseActivity extends BaseActivity<ExercisePresenter> implements
         layout.addView(playingExerciseView);
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-    }
 
     @Override
     protected void onResume() {
@@ -213,5 +213,17 @@ public class ExerciseActivity extends BaseActivity<ExercisePresenter> implements
     public void onBackPressed() {
         super.onBackPressed();
         playingExerciseView.close();
+    }
+
+    @Override
+    protected void onStart() {
+        stopwatch.printLog("ExerciseActivity"); // 다른 화면이 나타날 때
+        super.onStart();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        stopwatch.reset(); // 현재 화면이 없어질 때
     }
 }
