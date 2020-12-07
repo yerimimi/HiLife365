@@ -57,11 +57,6 @@ public class DeviceScanActivity extends ListActivity {
     private Handler mHandler;
     int conn_flag = 0;
 
-    // TODO Activity 타이머 시작
-    // TODO Activity 타이머 끝
-    // TODO Bluetooth 연결 시작
-    // TODO Bluetooth 연결 끝
-
     private static final int PERMISSION_REQUEST_COARSE_LOCATION = 1;
     private static final int REQUEST_ENABLE_BT = 1;
 

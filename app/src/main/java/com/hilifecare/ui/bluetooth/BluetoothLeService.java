@@ -33,6 +33,7 @@ import android.os.IBinder;
 import android.util.Log;
 
 import com.hilifecare.util.logging.EmgStopwatch;
+import com.hilifecare.util.logging.HrStopwatch;
 
 import java.util.List;
 import java.util.UUID;
@@ -116,15 +117,15 @@ public class BluetoothLeService extends Service {
                                          int status) {
             if (status == BluetoothGatt.GATT_SUCCESS) {
                 broadcastUpdate(ACTION_DATA_AVAILABLE, characteristic);
-                EmgStopwatch.getInstance().reset();
             }
-        }//TODO 시작
+        }
 
         @Override
         public void onCharacteristicChanged(BluetoothGatt gatt,
                                             BluetoothGattCharacteristic characteristic) {
             broadcastUpdate(ACTION_DATA_AVAILABLE, characteristic);
-        }//TODO 시작
+            HrStopwatch.getInstance().reset();
+        }
     };
 
     private void broadcastUpdate(final String action) {

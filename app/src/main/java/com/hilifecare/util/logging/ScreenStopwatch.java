@@ -5,7 +5,7 @@ import android.util.Log;
 
 public class ScreenStopwatch {
 
-    public static String TAG = "ElapsedTime";
+    public static String TAG = "ElapsedTime_Screen";
 
     private long startMillis;
 
