@@ -1,6 +1,5 @@
 package com.hilifecare.ui.base;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
@@ -11,15 +10,12 @@ import android.view.ViewGroup;
 
 import com.hilifecare.di.HasComponent;
 import com.hilifecare.model.UserInfo;
-import com.hilifecare.util.logging.Stopwatch;
 
 import butterknife.ButterKnife;
 import nucleus.view.NucleusSupportFragment;
 
 public abstract class BaseFragment<P extends BasePresenter> extends NucleusSupportFragment<P> {
     private static UserInfo userInfo;
-
-    Stopwatch stopwatch = new Stopwatch();
 
     @CallSuper
     @Override

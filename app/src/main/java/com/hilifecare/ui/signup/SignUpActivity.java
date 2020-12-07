@@ -20,7 +20,7 @@ import com.hilifecare.di.modules.SignUpModule;
 import com.hilifecare.ui.base.BaseActivity;
 import com.hilifecare.ui.login.LoginActivity;
 import com.hilifecare.ui.view.CustomEditText;
-import com.hilifecare.util.logging.Stopwatch;
+import com.hilifecare.util.logging.ScreenStopwatch;
 
 import javax.inject.Inject;
 
@@ -46,7 +46,6 @@ public class SignUpActivity extends BaseActivity<SignUpPresenter> implements Sig
     CustomEditText email_edittext;
     @Bind(R.id.pw_edittext)
     CustomEditText pw_edittext;
-    Stopwatch stopwatch = new Stopwatch();
 
 
     protected void injectModule() {
@@ -127,13 +126,13 @@ public class SignUpActivity extends BaseActivity<SignUpPresenter> implements Sig
 
     @Override
     protected void onStart() {
-        stopwatch.printLog("SignUpActivity"); // 다른 화면이 나타날 때
+        ScreenStopwatch.getInstance().printElapsedTimeLog("SignUpActivity"); // 다른 화면이 나타날 때
         super.onStart();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        stopwatch.reset(); // 현재 화면이 없어질 때
+        ScreenStopwatch.getInstance().reset(); // 현재 화면이 없어질 때
     }
 }

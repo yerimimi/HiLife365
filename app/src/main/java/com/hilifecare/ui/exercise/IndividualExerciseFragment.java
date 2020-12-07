@@ -1,6 +1,5 @@
 package com.hilifecare.ui.exercise;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,7 +13,7 @@ import com.hilifecare.R;
 import com.hilifecare.model.Exercise;
 import com.hilifecare.ui.base.BaseFragment;
 import com.hilifecare.ui.view.SpinnerAdapter;
-import com.hilifecare.util.logging.Stopwatch;
+import com.hilifecare.util.logging.ScreenStopwatch;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,8 +42,6 @@ public class IndividualExerciseFragment extends BaseFragment<IndividualExerciseP
     List<String> dataPart = new ArrayList<>();
     List<String> dataProps = new ArrayList<>();
     List<String> dataFunc = new ArrayList<>();
-
-    Stopwatch stopwatch = new Stopwatch();
 
     public IndividualExerciseFragment() {
     }
@@ -186,13 +183,13 @@ public class IndividualExerciseFragment extends BaseFragment<IndividualExerciseP
 
     @Override
     public void onStart() {
-        stopwatch.printLog("IndivisualExerciseFragment");
+        ScreenStopwatch.getInstance().printElapsedTimeLog("IndivisualExerciseFragment");
         super.onStart();
     }
 
     @Override
     public void onPause(){
-        stopwatch.reset();
+        ScreenStopwatch.getInstance().reset();
         super.onPause();
     }
 

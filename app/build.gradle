@@ -121,6 +121,7 @@ repositories {
 }
 
 dependencies {
+    compile 'org.altbeacon:android-beacon-library:2.17.1'
     compile fileTree(include: ['*.jar'], dir: 'libs')
     // android-hipster-needle-gradle-dependency
     apply plugin: 'com.google.gms.google-services'
@@ -133,6 +134,7 @@ dependencies {
     compile('com.crashlytics.sdk.android:crashlytics:2.6.8@aar') {
         transitive = true;
     }
+    // android-hipster-needle-gradle-dependency
 
     compile 'com.android.support:multidex:1.0.1'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.0.0'

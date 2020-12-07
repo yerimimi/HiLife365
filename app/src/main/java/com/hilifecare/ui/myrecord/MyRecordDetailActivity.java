@@ -1,54 +1,28 @@
 package com.hilifecare.ui.myrecord;
 
-import android.app.DatePickerDialog;
-import android.graphics.Color;
-import android.graphics.Typeface;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.DatePicker;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.github.mikephil.charting.animation.Easing;
-import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.charts.RadarChart;
-import com.github.mikephil.charting.components.AxisBase;
-import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.components.YAxis;
-import com.github.mikephil.charting.data.RadarData;
-import com.github.mikephil.charting.data.RadarDataSet;
-import com.github.mikephil.charting.data.RadarEntry;
-import com.github.mikephil.charting.formatter.IAxisValueFormatter;
-import com.github.mikephil.charting.interfaces.datasets.IRadarDataSet;
-import com.github.mikephil.charting.listener.ChartTouchListener;
-import com.github.mikephil.charting.listener.OnChartGestureListener;
 import com.hilifecare.R;
 import com.hilifecare.application.App;
 import com.hilifecare.di.ActivityScope;
 import com.hilifecare.di.HasComponent;
-import com.hilifecare.di.components.DaggerMyPageComponent;
-import com.hilifecare.di.components.DaggerMyRecordComponent;
 import com.hilifecare.di.components.DaggerMyRecordDetailComponent;
-import com.hilifecare.di.components.MyRecordComponent;
 import com.hilifecare.di.components.MyRecordDetailComponent;
 import com.hilifecare.di.modules.MyRecordDetailModule;
-import com.hilifecare.di.modules.MyRecordModule;
 import com.hilifecare.ui.base.BaseActivity;
 import com.hilifecare.ui.view.CustomToolbar;
-import com.hilifecare.util.logging.Stopwatch;
-
-import java.util.ArrayList;
+import com.hilifecare.util.logging.ScreenStopwatch;
 
 import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.OnClick;
 import nucleus.factory.PresenterFactory;
-import timber.log.Timber;
 
 @ActivityScope
 public class MyRecordDetailActivity extends BaseActivity<MyRecordDetailPresenter> implements MyRecordDetailView, HasComponent<MyRecordDetailComponent> {
@@ -100,10 +74,6 @@ public class MyRecordDetailActivity extends BaseActivity<MyRecordDetailPresenter
     View plus2;
     @Bind(R.id.percent_plus_3)
     View plus3;
-
-    Stopwatch stopwatch = new Stopwatch();
-
-
 
     protected void injectModule() {
         myRecordComponent = DaggerMyRecordDetailComponent.builder()
@@ -214,13 +184,13 @@ public class MyRecordDetailActivity extends BaseActivity<MyRecordDetailPresenter
 
     @Override
     protected void onStart() {
-        stopwatch.printLog("MyRecordDetailActivity"); // 다른 화면이 나타날 때
+        ScreenStopwatch.getInstance().printElapsedTimeLog("MyRecordDetailActivity"); // 다른 화면이 나타날 때
         super.onStart();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        stopwatch.reset(); // 현재 화면이 없어질 때
+        ScreenStopwatch.getInstance().reset(); // 현재 화면이 없어질 때
     }
 }

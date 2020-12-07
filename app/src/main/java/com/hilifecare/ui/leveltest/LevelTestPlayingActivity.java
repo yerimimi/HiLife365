@@ -20,7 +20,7 @@ import com.hilifecare.model.LevelTest;
 import com.hilifecare.ui.base.BaseActivity;
 import com.hilifecare.ui.view.CustomDialog;
 import com.hilifecare.ui.view.PlayingLevelTestView;
-import com.hilifecare.util.logging.Stopwatch;
+import com.hilifecare.util.logging.ScreenStopwatch;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,9 +42,6 @@ implements LevelTestPlayingView,HasComponent<LevelTestPlayingComponent>{
     LinearLayout layout;
     PlayingLevelTestView playingView;
     ArrayList<LevelTest> levelTestArrayList;
-
-    Stopwatch stopwatch = new Stopwatch();
-
 
     LevelTestPlayingComponent levelTestPlayingComponent;
     private int positionState;
@@ -187,13 +184,13 @@ implements LevelTestPlayingView,HasComponent<LevelTestPlayingComponent>{
 
     @Override
     protected void onStart() {
-        stopwatch.printLog("LevelTestPlayingActivity"); // 다른 화면이 나타날 때
+        ScreenStopwatch.getInstance().printElapsedTimeLog("LevelTestPlayingActivity"); // 다른 화면이 나타날 때
         super.onStart();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        stopwatch.reset(); // 현재 화면이 없어질 때
+        ScreenStopwatch.getInstance().reset(); // 현재 화면이 없어질 때
     }
 }

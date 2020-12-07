@@ -10,13 +10,11 @@ import com.hilifecare.model.UserInfo;
 import com.hilifecare.ui.base.BaseFragment;
 import com.hilifecare.ui.base.EmptyPresenter;
 import com.hilifecare.ui.leveltest.LevelTestActivity;
-import com.hilifecare.util.logging.Stopwatch;
+import com.hilifecare.util.logging.ScreenStopwatch;
 
 import butterknife.OnClick;
 
 public class MainFragment extends BaseFragment<EmptyPresenter> {
-
-    Stopwatch stopwatch = new Stopwatch();
 
     @Override
     protected void inject() {
@@ -60,7 +58,7 @@ public class MainFragment extends BaseFragment<EmptyPresenter> {
 
     @Override
     public void onPause(){
-        stopwatch.reset();
+        ScreenStopwatch.getInstance().reset();
         super.onPause();
     }
 }

@@ -28,7 +28,7 @@ import butterknife.Bind;
 import butterknife.OnClick;
 import nucleus.factory.PresenterFactory;
 
-import com.hilifecare.util.logging.Stopwatch;
+import com.hilifecare.util.logging.ScreenStopwatch;
 
 
 @ActivityScope
@@ -53,8 +53,6 @@ public class MyPageActivity extends BaseActivity<MyPagePresenter> implements MyP
 
     ProgressDialog pDialog;
     UserInfo userInfo = new UserInfo();
-
-    Stopwatch stopwatch = new Stopwatch();
 
     protected void injectModule() {
         myPageComponent = DaggerMyPageComponent.builder().applicationComponent(App.get(this).getComponent()).myPageModule(new MyPageModule(this)).build();
@@ -169,13 +167,13 @@ public class MyPageActivity extends BaseActivity<MyPagePresenter> implements MyP
 
     @Override
     protected void onStart() {
-        stopwatch.printLog("MyPage"); // 다른 화면이 나타날 때
+        ScreenStopwatch.getInstance().printElapsedTimeLog("MyPage"); // 다른 화면이 나타날 때
         super.onStart();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        stopwatch.reset(); // 현재 화면이 없어질 때
+        ScreenStopwatch.getInstance().reset(); // 현재 화면이 없어질 때
     }
 }

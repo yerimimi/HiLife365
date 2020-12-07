@@ -1,6 +1,5 @@
 package com.hilifecare.ui.exercise;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hilifecare.R;
-import com.hilifecare.util.logging.Stopwatch;
+import com.hilifecare.util.logging.ScreenStopwatch;
 
 import butterknife.ButterKnife;
 
@@ -18,8 +17,6 @@ import butterknife.ButterKnife;
  */
 
 public class ExerciseProgramFragment extends Fragment{
-
-    Stopwatch stopwatch = new Stopwatch();
 
     public ExerciseProgramFragment() {
 
@@ -51,13 +48,13 @@ public class ExerciseProgramFragment extends Fragment{
 
     @Override
     public void onStart() {
-        stopwatch.printLog("ExerciseProgramFragment");
+        ScreenStopwatch.getInstance().printElapsedTimeLog("ExerciseProgramFragment");
         super.onStart();
     }
 
     @Override
     public void onPause(){
-        stopwatch.reset();
+        ScreenStopwatch.getInstance().reset();
         super.onPause();
     }
 

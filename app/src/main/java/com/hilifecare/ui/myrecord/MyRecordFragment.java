@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hilifecare.R;
-import com.hilifecare.util.logging.Stopwatch;
+import com.hilifecare.util.logging.ScreenStopwatch;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -19,8 +19,6 @@ import butterknife.OnClick;
  */
 
 public class MyRecordFragment extends Fragment{
-
-    Stopwatch stopwatch = new Stopwatch();
 
     public MyRecordFragment() {
 
@@ -55,13 +53,16 @@ public class MyRecordFragment extends Fragment{
     }
 
     @Override
-    public void onStart() {
+    public void onStart()
+    {
+        ScreenStopwatch.getInstance().printElapsedTimeLog("MyRecordFragment");
         super.onStart();
     }
 
     @Override
     public void onPause(){
         super.onPause();
+        ScreenStopwatch.getInstance().reset();
     }
 
 }

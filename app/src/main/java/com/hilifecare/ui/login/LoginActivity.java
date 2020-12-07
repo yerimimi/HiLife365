@@ -23,7 +23,7 @@ import com.hilifecare.di.modules.LoginModule;
 import com.hilifecare.ui.base.BaseActivity;
 import com.hilifecare.ui.signup.SignUpActivity;
 import com.hilifecare.ui.view.CustomDialog;
-import com.hilifecare.util.logging.Stopwatch;
+import com.hilifecare.util.logging.ScreenStopwatch;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.iconics.IconicsDrawable;
 
@@ -57,9 +57,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     TextView login_forgot;
     @Bind(R.id.progress)
     ProgressBar progressBar;
-
-    Stopwatch stopwatch = new Stopwatch();
-
 
     protected void injectModule() {
         loginComponent = DaggerLoginComponent.builder()
@@ -165,13 +162,13 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
     @Override
     protected void onStart() {
-        stopwatch.printLog("LoginActivity"); // 다른 화면이 나타날 때
+        ScreenStopwatch.getInstance().printElapsedTimeLog("LoginActivity"); // 다른 화면이 나타날 때
         super.onStart();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        stopwatch.reset(); // 현재 화면이 없어질 때
+        ScreenStopwatch.getInstance().reset(); // 현재 화면이 없어질 때
     }
 }

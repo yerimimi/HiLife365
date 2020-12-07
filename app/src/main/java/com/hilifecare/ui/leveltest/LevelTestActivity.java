@@ -25,7 +25,7 @@ import javax.inject.Inject;
 import butterknife.Bind;
 import butterknife.OnClick;
 import nucleus.factory.PresenterFactory;
-import com.hilifecare.util.logging.Stopwatch;
+import com.hilifecare.util.logging.ScreenStopwatch;
 
 
 @ActivityScope
@@ -48,9 +48,6 @@ LevelTestListFragment.OnFragmentInteractionListener{
     TextView toolbarName;
     @Bind(R.id.toolbar_right)
     ImageView toolbarRight;
-
-    Stopwatch stopwatch = new Stopwatch();
-
 
     public static Context mContext;
     private Fragment fragment;
@@ -128,20 +125,20 @@ LevelTestListFragment.OnFragmentInteractionListener{
 
     @Override
     protected void onStart() {
-        stopwatch.printLog("LevelTestActivity"); // 다른 화면이 나타날 때
+        ScreenStopwatch.getInstance().printElapsedTimeLog("LevelTestActivity"); // 다른 화면이 나타날 때
         super.onStart();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        stopwatch.reset(); // 현재 화면이 없어질 때
+        ScreenStopwatch.getInstance().reset(); // 현재 화면이 없어질 때
     }
 
     /*@Override
     protected void o() {
         super.onStop();
-        stopwatch.reset(); // 현재 화면이 없어질 때
+        ScreenStopwatch.getInstance().reset(); // 현재 화면이 없어질 때
     }*/
 
 }

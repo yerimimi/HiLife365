@@ -7,7 +7,6 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -36,7 +35,7 @@ import com.hilifecare.ui.plan.PlanDetailActivity;
 import com.hilifecare.ui.plan.PlanFragment;
 import com.hilifecare.ui.setting.SettingActivity;
 import com.hilifecare.ui.view.CustomToolbar;
-import com.hilifecare.util.logging.Stopwatch;
+import com.hilifecare.util.logging.ScreenStopwatch;
 
 import java.util.ArrayList;
 
@@ -75,10 +74,6 @@ public class MainActivity extends BaseActivity<MainPresenter>
     Fragment fragment = null;
     ArrayList<Exercise> exerciseArrayList = new ArrayList<>();
     ArrayList<Plan> planArrayList = new ArrayList<>();
-
-
-    Stopwatch stopwatch = new Stopwatch();
-
 
     protected void injectModule() {
         component = DaggerMainComponent.builder()
@@ -317,13 +312,13 @@ public class MainActivity extends BaseActivity<MainPresenter>
 
     @Override
     protected void onStart() {
-        stopwatch.printLog("MainActivity"); // 다른 화면이 나타날 때
+        ScreenStopwatch.getInstance().printElapsedTimeLog("MainActivity"); // 다른 화면이 나타날 때
         super.onStart();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        stopwatch.reset(); // 현재 화면이 없어질 때
+        ScreenStopwatch.getInstance().reset(); // 현재 화면이 없어질 때
     }
 }

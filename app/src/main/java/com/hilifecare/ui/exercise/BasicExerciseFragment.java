@@ -1,22 +1,17 @@
 package com.hilifecare.ui.exercise;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTabHost;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ExpandableListView;
 
 import com.hilifecare.R;
 import com.hilifecare.ui.main.MainActivity;
 import com.hilifecare.ui.plan.PlanFragment;
-import com.hilifecare.util.logging.Stopwatch;
+import com.hilifecare.util.logging.ScreenStopwatch;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -25,8 +20,6 @@ import butterknife.OnClick;
  */
 
 public class BasicExerciseFragment extends Fragment{
-
-    Stopwatch stopwatch = new Stopwatch();
 
     public BasicExerciseFragment() {
     }
@@ -54,13 +47,13 @@ public class BasicExerciseFragment extends Fragment{
 
     @Override
     public void onStart() {
-        stopwatch.printLog("BasicExerciseFragment");
+        ScreenStopwatch.getInstance().printElapsedTimeLog("BasicExerciseFragment");
         super.onStart();
     }
 
     @Override
     public void onPause(){
-        stopwatch.reset();
+        ScreenStopwatch.getInstance().reset();
         super.onPause();
     }
 }

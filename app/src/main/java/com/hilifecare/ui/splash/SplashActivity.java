@@ -21,7 +21,7 @@ import com.hilifecare.di.components.SplashComponent;
 import com.hilifecare.di.modules.SplashModule;
 import com.hilifecare.ui.base.BaseActivity;
 import com.hilifecare.ui.main.MainActivity;
-import com.hilifecare.util.logging.Stopwatch;
+import com.hilifecare.util.logging.ScreenStopwatch;
 
 import javax.inject.Inject;
 
@@ -38,9 +38,6 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
     private static final String TAG = SplashActivity.class.getSimpleName();
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-
-    Stopwatch stopwatch = new Stopwatch();
-
 
     protected void injectModule() {
         splashComponent = DaggerSplashComponent.builder().applicationComponent(App.get(this).getComponent()).splashModule(new SplashModule(this)).build();
@@ -76,7 +73,7 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
     @Override
     protected void onPause() {
         super.onPause();
-        stopwatch.reset();
+        ScreenStopwatch.getInstance().reset();
     }
 
     private void onFirebaseLoginOrRegister(){

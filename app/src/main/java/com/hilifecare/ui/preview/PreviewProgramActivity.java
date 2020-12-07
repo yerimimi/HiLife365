@@ -18,7 +18,7 @@ import com.hilifecare.ui.base.BaseActivity;
 import com.hilifecare.ui.view.CustomDialog;
 import com.hilifecare.ui.view.CustomToolbar;
 import com.hilifecare.ui.view.PlayingExercisePreviewtView;
-import com.hilifecare.util.logging.Stopwatch;
+import com.hilifecare.util.logging.ScreenStopwatch;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -47,8 +47,6 @@ public class PreviewProgramActivity extends BaseActivity<PreviewProgramPresenter
     LinearLayout previewStartContainer;
     @Bind(R.id.playing_view)
     PlayingExercisePreviewtView playingExerciseView;
-
-    Stopwatch stopwatch = new Stopwatch();
 
 
     ArrayList<PreviewProgram> previewProgramArrayList;
@@ -140,13 +138,13 @@ public class PreviewProgramActivity extends BaseActivity<PreviewProgramPresenter
 
     @Override
     protected void onStart() {
-        stopwatch.printLog("PreviewProgramActivity"); // 다른 화면이 나타날 때
+        ScreenStopwatch.getInstance().printElapsedTimeLog("PreviewProgramActivity"); // 다른 화면이 나타날 때
         super.onStart();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        stopwatch.reset(); // 현재 화면이 없어질 때
+        ScreenStopwatch.getInstance().reset(); // 현재 화면이 없어질 때
     }
 }

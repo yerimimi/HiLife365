@@ -2,14 +2,11 @@ package com.hilifecare.ui.plan;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -20,9 +17,7 @@ import com.hilifecare.di.components.MainComponent;
 import com.hilifecare.model.Plan;
 import com.hilifecare.model.UserInfo;
 import com.hilifecare.ui.base.BaseFragment;
-import com.hilifecare.ui.main.MainActivity;
-import com.hilifecare.ui.plan.PlanAddActivity;
-import com.hilifecare.util.logging.Stopwatch;
+import com.hilifecare.util.logging.ScreenStopwatch;
 
 import java.util.ArrayList;
 
@@ -54,8 +49,6 @@ public class PlanFragment extends BaseFragment<PlanPresenter> implements PlanVie
 
     ProgressDialog pDialog;
     UserInfo userInfo;
-
-    Stopwatch stopwatch = new Stopwatch();
 
     public PlanFragment() {
     }
@@ -160,13 +153,13 @@ public class PlanFragment extends BaseFragment<PlanPresenter> implements PlanVie
 
     @Override
     public void onStart() {
-        stopwatch.printLog("PlanFragment");
+        ScreenStopwatch.getInstance().printElapsedTimeLog("PlanFragment");
         super.onStart();
     }
 
     @Override
     public void onPause(){
-        stopwatch.reset();
+        ScreenStopwatch.getInstance().reset();
         super.onPause();
     }
 }

@@ -51,7 +51,8 @@ import javax.inject.Inject;
 
 import nucleus.factory.PresenterFactory;
 
-import com.hilifecare.util.logging.Stopwatch;
+import com.hilifecare.util.logging.EmgStopwatch;
+import com.hilifecare.util.logging.ScreenStopwatch;
 
 
 /**
@@ -60,6 +61,7 @@ import com.hilifecare.util.logging.Stopwatch;
  * communicates with {@code BluetoothLeService}, which in turn interacts with the
  * Bluetooth LE API.
  */
+
 public class DeviceControlActivity extends BaseActivity<DeviceControlPresenter> implements DeviceControlView, HasComponent<DeviceControlComponent> {
 
     @Inject
@@ -85,8 +87,6 @@ public class DeviceControlActivity extends BaseActivity<DeviceControlPresenter> 
 
     private final String LIST_NAME = "NAME";
     private final String LIST_UUID = "UUID";
-
-    Stopwatch stopwatch = new Stopwatch();
 
     @Override
     protected void injectModule() {
@@ -133,10 +133,12 @@ public class DeviceControlActivity extends BaseActivity<DeviceControlPresenter> 
                 updateConnectionState(R.string.connected);
                 invalidateOptionsMenu();
                 setmDeviceAddress(mDeviceAddress);
+                EmgStopwatch.getInstance().printElapsedTimeLog("DeviceConnect");
             } else if (BluetoothLeService.ACTION_GATT_DISCONNECTED.equals(action)) {
                 mConnected = false;
                 updateConnectionState(R.string.disconnected);
                 invalidateOptionsMenu();
+                ScreenStopwatch.getInstance().printElapsedTimeLog("DeviceConnect");
                 clearUI();
             } else if (BluetoothLeService.ACTION_GATT_SERVICES_DISCOVERED.equals(action)) {
                 // Show all the supported services and characteristics on the user interface.
@@ -339,6 +341,7 @@ public class DeviceControlActivity extends BaseActivity<DeviceControlPresenter> 
                 new String[] {LIST_NAME, LIST_UUID},
                 new int[] { android.R.id.text1, android.R.id.text2 }
         );
+        ScreenStopwatch.getInstance().printElapsedTimeLog("DeviceConnect");
         mGattServicesList.setAdapter(gattServiceAdapter);
     }
 
@@ -358,13 +361,12 @@ public class DeviceControlActivity extends BaseActivity<DeviceControlPresenter> 
 
     @Override
     protected void onStart() {
-        stopwatch.printLog("DeviceControlActivity"); // 다른 화면이 나타날 때
         super.onStart();
+        ScreenStopwatch.getInstance().reset();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        stopwatch.reset(); // 현재 화면이 없어질 때
     }
 }

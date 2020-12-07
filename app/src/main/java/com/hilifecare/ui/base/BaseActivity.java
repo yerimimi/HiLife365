@@ -14,15 +14,11 @@ import io.fabric.sdk.android.Fabric;
 import nucleus.presenter.Presenter;
 import nucleus.view.NucleusAppCompatActivity;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
-import com.hilifecare.util.logging.Stopwatch;
 
 
 public abstract class BaseActivity<P extends Presenter> extends NucleusAppCompatActivity<P> {
     private static String mDeviceAddress = null;
     private static UserInfo userInfo;
-
-    Stopwatch stopwatch = new Stopwatch();
-
 
     @CallSuper
     @Override
@@ -78,6 +74,6 @@ public abstract class BaseActivity<P extends Presenter> extends NucleusAppCompat
     /*@Override
     protected void onPause() {
         super.onPause();
-        stopwatch.reset(); // 현재 화면이 없어질 때
+        ScreenStopwatch.getInstance().reset(); // 현재 화면이 없어질 때
     }*/
 }

@@ -162,6 +162,12 @@
             android:label="@string/heartrate_title"/>
         <activity android:name=".ui.bluetooth.DeviceControlActivity"/>
         <service android:name=".ui.bluetooth.BluetoothLeService" android:enabled="true"/>
+        <service
+            android:name=".ui.emg.le.service.EmgService"
+            android:enabled="true" />
+        <activity android:name=".ui.emg.EmgActivity">
+
+        </activity>
     </application>
 
 </manifest>

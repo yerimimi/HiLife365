@@ -34,7 +34,7 @@ import com.hilifecare.di.components.MyRecordComponent;
 import com.hilifecare.di.modules.MyRecordModule;
 import com.hilifecare.ui.base.BaseActivity;
 import com.hilifecare.ui.view.CustomToolbar;
-import com.hilifecare.util.logging.Stopwatch;
+import com.hilifecare.util.logging.ScreenStopwatch;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -71,10 +71,6 @@ public class MyRecordActivity extends BaseActivity<MyRecordPresenter> implements
     private MyRecordRecyclerViewAdpater adapter;
     private Typeface mTfLight;
     private Calendar calendar;
-
-    Stopwatch stopwatch = new Stopwatch();
-
-
 
     protected void injectModule() {
         myRecordComponent = DaggerMyRecordComponent.builder()
@@ -286,13 +282,13 @@ public class MyRecordActivity extends BaseActivity<MyRecordPresenter> implements
 
     @Override
     protected void onStart() {
-        stopwatch.printLog("MyRecordActivity"); // 다른 화면이 나타날 때
+        ScreenStopwatch.getInstance().printElapsedTimeLog("MyRecordActivity"); // 다른 화면이 나타날 때
         super.onStart();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        stopwatch.reset(); // 현재 화면이 없어질 때
+        ScreenStopwatch.getInstance().reset(); // 현재 화면이 없어질 때
     }
 }

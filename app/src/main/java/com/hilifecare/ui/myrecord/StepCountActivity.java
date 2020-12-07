@@ -36,7 +36,7 @@ import com.hilifecare.ui.base.BaseActivity;
 import com.hilifecare.ui.bluetooth.BluetoothLeService;
 import com.hilifecare.ui.bluetooth.SampleGattAttributes;
 import com.hilifecare.ui.view.CustomToolbar;
-import com.hilifecare.util.logging.Stopwatch;
+import com.hilifecare.util.logging.ScreenStopwatch;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -75,9 +75,6 @@ public class StepCountActivity extends BaseActivity<StepCountPresenter> implemen
     @Bind(distance_value)
     TextView distanceValue;
     private Typeface mTfLight;
-
-    Stopwatch stopwatch = new Stopwatch();
-
 
     private final String LIST_NAME = "NAME";
     private final String LIST_UUID = "UUID";
@@ -465,13 +462,13 @@ public class StepCountActivity extends BaseActivity<StepCountPresenter> implemen
 
     @Override
     protected void onStart() {
-        stopwatch.printLog("StepCountActivity"); // 다른 화면이 나타날 때
+        ScreenStopwatch.getInstance().printElapsedTimeLog("StepCountActivity"); // 다른 화면이 나타날 때
         super.onStart();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        stopwatch.reset(); // 현재 화면이 없어질 때
+        ScreenStopwatch.getInstance().reset(); // 현재 화면이 없어질 때
     }
 }

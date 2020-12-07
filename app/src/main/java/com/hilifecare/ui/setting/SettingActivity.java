@@ -17,7 +17,8 @@ import javax.inject.Inject;
 import butterknife.Bind;
 import butterknife.OnClick;
 import timber.log.Timber;
-import com.hilifecare.util.logging.Stopwatch;
+
+import com.hilifecare.util.logging.ScreenStopwatch;
 
 
 /**
@@ -34,7 +35,6 @@ public class SettingActivity extends BaseActivity<SettingPresenter> implements S
     TextView toolbarName;
     @Bind(R.id.version)
     TextView version;
-    Stopwatch stopwatch = new Stopwatch();
 
     @Override
     public SettingComponent getComponent() {return settingComponent;}
@@ -87,14 +87,14 @@ public class SettingActivity extends BaseActivity<SettingPresenter> implements S
 
     @Override
     protected void onStart() {
-        stopwatch.printLog("SettingActivity"); // 다른 화면이 나타날 때
+        ScreenStopwatch.getInstance().printElapsedTimeLog("SettingActivity"); // 다른 화면이 나타날 때
         super.onStart();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        stopwatch.reset(); // 현재 화면이 없어질 때
+        ScreenStopwatch.getInstance().reset(); // 현재 화면이 없어질 때
     }
 
 

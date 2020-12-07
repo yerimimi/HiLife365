@@ -41,7 +41,8 @@ import com.hilifecare.ui.bluetooth.BluetoothLeService;
 import com.hilifecare.ui.bluetooth.SampleGattAttributes;
 import com.hilifecare.ui.view.CustomDialog;
 import com.hilifecare.ui.view.CustomToolbar;
-import com.hilifecare.util.logging.Stopwatch;
+import com.hilifecare.util.logging.HrStopwatch;
+import com.hilifecare.util.logging.ScreenStopwatch;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -84,9 +85,6 @@ public class HeartRateActivity extends BaseActivity<HeartRatePresenter> implemen
     @Bind(R.id.exercise_start)
     TextView exercise_startnend;
     private Typeface mTfLight;
-
-    Stopwatch stopwatch = new Stopwatch();
-
 
     private final String LIST_NAME = "NAME";
     private final String LIST_UUID = "UUID";
@@ -505,6 +503,8 @@ public class HeartRateActivity extends BaseActivity<HeartRatePresenter> implemen
                         pDialog_syncHR.dismiss();
                     Log.d("HL3", "HR 측정 - " + hr_data);
                     displayData(hr_data, spo2_data, distance_data, calories_data, step_data);
+                    HrStopwatch.getInstance().printElapsedTimeLog("HrDisplay");
+                    // TODO 끝
                     time_stack = 0;
                     sync_time = getTime();
                 }
@@ -679,13 +679,13 @@ public class HeartRateActivity extends BaseActivity<HeartRatePresenter> implemen
 
     @Override
     protected void onStart() {
-        stopwatch.printLog("HeartRateActivity"); // 다른 화면이 나타날 때
+        ScreenStopwatch.getInstance().printElapsedTimeLog("HeartRateActivity"); // 다른 화면이 나타날 때
         super.onStart();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        stopwatch.reset(); // 현재 화면이 없어질 때
+        ScreenStopwatch.getInstance().reset(); // 현재 화면이 없어질 때
     }
 }
