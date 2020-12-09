@@ -33,6 +33,7 @@ import android.os.IBinder;
 import android.util.Log;
 
 import com.hilifecare.util.logging.HrStopwatch;
+import com.hilifecare.util.logging.ResponseStopwatch;
 import com.hilifecare.util.logging.VisualStopwatch;
 
 import java.util.List;
@@ -106,7 +107,6 @@ public class BluetoothLeService extends Service {
         public void onServicesDiscovered(BluetoothGatt gatt, int status) {
             if (status == BluetoothGatt.GATT_SUCCESS) {
                 broadcastUpdate(ACTION_GATT_SERVICES_DISCOVERED);
-                //HrStopwatch.getInstance().reset();
                 //TODO 생체부착형센서 입력 및 반응 속도 (심박)
             } else {
                 Log.w(TAG, "onServicesDiscovered received: " + status);
@@ -147,12 +147,14 @@ public class BluetoothLeService extends Service {
             if ((flag & 0x01) != 0) {
                 format = BluetoothGattCharacteristic.FORMAT_UINT16;
                 Log.d(TAG, "Heart rate format UINT16.");
+                ResponseStopwatch.getInstance().reset();
             } else {
                 format = BluetoothGattCharacteristic.FORMAT_UINT8;
                 Log.d(TAG, "Heart rate format UINT8.");
+                ResponseStopwatch.getInstance().reset();
             }
             final int sync_flag = characteristic.getIntValue(format, 0);
-            if(sync_flag == 1) {    //sync 전송
+            if (sync_flag == 1) {    //sync 전송
                 intent.putExtra(SYNC_DATA, String.valueOf(characteristic.getIntValue(format, 0)));
                 intent.putExtra(TIME_DATA, String.valueOf(characteristic.getIntValue(format, 1)));
                 intent.putExtra(HR_DATA, String.valueOf(characteristic.getIntValue(format, 2)));
@@ -170,7 +172,7 @@ public class BluetoothLeService extends Service {
             final byte[] data = characteristic.getValue();
             if (data != null && data.length > 0) {
                 final StringBuilder stringBuilder = new StringBuilder(data.length);
-                for(byte byteChar : data)
+                for (byte byteChar : data)
                     stringBuilder.append(String.format("%02X ", byteChar));
                 intent.putExtra(EXTRA_DATA, new String(data) + "\n" + stringBuilder.toString());
             }
@@ -229,11 +231,10 @@ public class BluetoothLeService extends Service {
      * Connects to the GATT server hosted on the Bluetooth LE device.
      *
      * @param address The device address of the destination device.
-     *
      * @return Return true if the connection is initiated successfully. The connection result
-     *         is reported asynchronously through the
-     *         {@code BluetoothGattCallback#onConnectionStateChange(android.bluetooth.BluetoothGatt, int, int)}
-     *         callback.
+     * is reported asynchronously through the
+     * {@code BluetoothGattCallback#onConnectionStateChange(android.bluetooth.BluetoothGatt, int, int)}
+     * callback.
      */
     public boolean connect(final String address) {
         if (mBluetoothAdapter == null || address == null) {
@@ -261,6 +262,7 @@ public class BluetoothLeService extends Service {
         // We want to directly connect to the device, so we are setting the autoConnect
         // parameter to false.
         mBluetoothGatt = device.connectGatt(this, false, mGattCallback);
+        HrStopwatch.getInstance().reset();
         Log.d(TAG, "Trying to create a new connection.");
         mBluetoothDeviceAddress = address;
         mConnectionState = STATE_CONNECTING;
@@ -312,7 +314,7 @@ public class BluetoothLeService extends Service {
      * Enables or disables notification on a give characteristic.
      *
      * @param characteristic Characteristic to act on.
-     * @param enabled If true, enable notification.  False otherwise.
+     * @param enabled        If true, enable notification.  False otherwise.
      */
     public void setCharacteristicNotification(BluetoothGattCharacteristic characteristic,
                                               boolean enabled) {
@@ -339,7 +341,6 @@ public class BluetoothLeService extends Service {
      */
     public List<BluetoothGattService> getSupportedGattServices() {
         if (mBluetoothGatt == null) return null;
-
         return mBluetoothGatt.getServices();
     }
 }

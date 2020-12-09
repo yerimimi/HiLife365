@@ -142,7 +142,6 @@ public class DeviceControlActivity extends BaseActivity<DeviceControlPresenter> 
             } else if (BluetoothLeService.ACTION_GATT_SERVICES_DISCOVERED.equals(action)) {
                 // Show all the supported services and characteristics on the user interface.
                 displayGattServices(mBluetoothLeService.getSupportedGattServices());
-                //HrStopwatch.getInstance().printElapsedTimeLog("HrConnected");
             } else if (BluetoothLeService.ACTION_DATA_AVAILABLE.equals(action)) {
                 displayData(intent.getStringExtra(BluetoothLeService.EXTRA_DATA));
             }

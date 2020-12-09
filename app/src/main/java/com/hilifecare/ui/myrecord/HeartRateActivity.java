@@ -42,6 +42,7 @@ import com.hilifecare.ui.bluetooth.SampleGattAttributes;
 import com.hilifecare.ui.view.CustomDialog;
 import com.hilifecare.ui.view.CustomToolbar;
 import com.hilifecare.util.logging.HrStopwatch;
+import com.hilifecare.util.logging.ResponseStopwatch;
 import com.hilifecare.util.logging.ScreenStopwatch;
 import com.hilifecare.util.logging.VisualStopwatch;
 
@@ -103,8 +104,8 @@ public class HeartRateActivity extends BaseActivity<HeartRatePresenter> implemen
     private ArrayList<Integer> restingHRs = new ArrayList<>();
     private int count;
     private int time_tick;
-    private int hr=0;
-    private int restingHR=0;
+    private int hr = 0;
+    private int restingHR = 0;
     private CustomDialog customDialog;
 
     protected void injectModule() {
@@ -121,7 +122,7 @@ public class HeartRateActivity extends BaseActivity<HeartRatePresenter> implemen
     }
 
     public void init() {
-        if(getmDeviceAddress() == null) {
+        if (getmDeviceAddress() == null) {
             Toast.makeText(this, "블루투스가 연결되어 있지 않습니다.", Toast.LENGTH_LONG).show();
             finish();
         }
@@ -142,9 +143,6 @@ public class HeartRateActivity extends BaseActivity<HeartRatePresenter> implemen
         bindService(gattServiceIntent, mServiceConnection, BIND_AUTO_CREATE);
 
         Log.d("HL3", "BLE 연결 시작");
-        //HrStopwatch.getInstance().reset();
-        //TODO 생체부착형 센서 접속속도 (심박)
-
     }
 
     @Override
@@ -159,7 +157,7 @@ public class HeartRateActivity extends BaseActivity<HeartRatePresenter> implemen
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if(getmDeviceAddress() != null) {
+        if (getmDeviceAddress() != null) {
             unregisterReceiver(mGattUpdateReceiver);
             unbindService(mServiceConnection);
             mBluetoothLeService = null;
@@ -217,13 +215,13 @@ public class HeartRateActivity extends BaseActivity<HeartRatePresenter> implemen
     }
 
     @OnClick(R.id.toolbar_left)
-    void goBack(){
+    void goBack() {
         finish();
     }
 
     @OnClick(R.id.exercise_start)
     void setExerciseMode() {
-        if(exercise_startnend.getText().equals("운동시작")) {
+        if (exercise_startnend.getText().equals("운동시작")) {
             count = 0;
             customDialog = new CustomDialog(this, CustomDialog.TYPE_TWOBUTTON)
                     .setMessage("운동모드를 시작 하시겠습니까?")
@@ -264,21 +262,21 @@ public class HeartRateActivity extends BaseActivity<HeartRatePresenter> implemen
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if(!pDialog_restingHR.isShowing())
+                        if (!pDialog_restingHR.isShowing())
                             timer.cancel();
-                        if(count < 60) {
+                        if (count < 60) {
                             restingHRs.add(count++, hr);
                             Log.d("JHY test hr", String.valueOf(hr));
                         } else {
                             int sumRestingHRs = 0;
-                            for(int i=0; i < count; i++) {
-                                sumRestingHRs+=restingHRs.get(i);
+                            for (int i = 0; i < count; i++) {
+                                sumRestingHRs += restingHRs.get(i);
                             }
-                            restingHR = sumRestingHRs/count;
+                            restingHR = sumRestingHRs / count;
                             Log.d("JHY test aver hr", String.valueOf(restingHR));
                             exercise_startnend.setText("운동중");
                             exercise_startnend.setTextColor(Color.GREEN);
-                            heartRatePresenter.insertHeartRate(getTime(),-1,-1,"-1","-1","-1");
+                            heartRatePresenter.insertHeartRate(getTime(), -1, -1, "-1", "-1", "-1");
                             if (pDialog_restingHR.isShowing())
                                 pDialog_restingHR.dismiss();
                             timer.cancel();
@@ -292,7 +290,7 @@ public class HeartRateActivity extends BaseActivity<HeartRatePresenter> implemen
     private void setExerciseModeFinishListener() {
         exercise_startnend.setText("운동시작");
         exercise_startnend.setTextColor(Color.GRAY);
-        heartRatePresenter.insertHeartRate(getTime(),-2,-2,"-2","-2","-2");
+        heartRatePresenter.insertHeartRate(getTime(), -2, -2, "-2", "-2", "-2");
 
         customDialog.dismiss();
 
@@ -303,10 +301,10 @@ public class HeartRateActivity extends BaseActivity<HeartRatePresenter> implemen
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if(restingHR >= hr){
+                        if (restingHR >= hr) {
                             count++;
                             Log.d("JHY test hr", String.valueOf(hr));
-                            if(count >= 5){
+                            if (count >= 5) {
                                 //평상심박수 회복!
                                 //회복한 시간을 출력해줘야함 (time_tick+1)*5 + 0.5 초
                                 setExerciseModeResultListener(time_tick);
@@ -342,7 +340,7 @@ public class HeartRateActivity extends BaseActivity<HeartRatePresenter> implemen
         return heartRateComponent;
     }
 
-    public void setChart(ArrayList<Entry> hr, ArrayList<Entry> spo2, int max_Evalue){
+    public void setChart(ArrayList<Entry> hr, ArrayList<Entry> spo2, int max_Evalue) {
         LineDataSet set1;
         LineDataSet set2;
 
@@ -372,9 +370,9 @@ public class HeartRateActivity extends BaseActivity<HeartRatePresenter> implemen
         set1.setFormLineDashEffect(new DashPathEffect(new float[]{10f, 5f}, 0f));
         set1.setFormSize(15.f);
 
-        if(set1.getEntryCount() == max_Evalue) {
+        if (set1.getEntryCount() == max_Evalue) {
             set1.removeFirst();
-            for(Entry entry: set1.getValues())
+            for (Entry entry : set1.getValues())
                 entry.setX(entry.getX() - 1);
         }
 
@@ -395,9 +393,9 @@ public class HeartRateActivity extends BaseActivity<HeartRatePresenter> implemen
         set2.setFormLineDashEffect(new DashPathEffect(new float[]{10f, 5f}, 0f));
         set2.setFormSize(15.f);
 
-        if(set2.getEntryCount() == max_Evalue) {
+        if (set2.getEntryCount() == max_Evalue) {
             set2.removeFirst();
-            for(Entry entry: set2.getValues())
+            for (Entry entry : set2.getValues())
                 entry.setX(entry.getX() - 1);
         }
 
@@ -473,7 +471,7 @@ public class HeartRateActivity extends BaseActivity<HeartRatePresenter> implemen
             final String action = intent.getAction();
             if (BluetoothLeService.ACTION_GATT_CONNECTED.equals(action)) {
                 Log.d("HL3", "BLE 연결 완료");
-                //HrStopwatch.getInstance().printElapsedTimeLog("HrConnected");
+                HrStopwatch.getInstance().printElapsedTimeLog("HrConnected");
                 //TODO 생체부착형 센서 접속속도 (심박)
             } else if (BluetoothLeService.ACTION_GATT_DISCONNECTED.equals(action)) {
                 mBluetoothLeService.connect(getmDeviceAddress());
@@ -485,17 +483,15 @@ public class HeartRateActivity extends BaseActivity<HeartRatePresenter> implemen
                 String hr_data = intent.getStringExtra(BluetoothLeService.HR_DATA);
                 String spo2_data = intent.getStringExtra(BluetoothLeService.SPO2_DATA);
                 String speed_data = intent.getStringExtra(BluetoothLeService.SPEED_DATA);
-                String calories_data = convertCalories(Double.parseDouble(speed_data)*3);
-                String distance_data = convertDistance(Double.parseDouble(speed_data)*3);
+                String calories_data = convertCalories(Double.parseDouble(speed_data) * 3);
+                String distance_data = convertDistance(Double.parseDouble(speed_data) * 3);
                 String step_data = convertStep(Double.parseDouble(distance_data));
                 if (sync_flag.equals("1")) {    //sync 전송
                     //firebase 전송
                     Log.d("HL3", "동기화 데이터 전송");
-                    //TODO 데이터 시각화 (심박)
-                    if(!pDialog_syncHR.isShowing()) {
+                    if (!pDialog_syncHR.isShowing()) {
                         pDialog_syncHR.setMessage("동기화중....");
                         pDialog_syncHR.show();
-                        //TODO 데이터 시각화 (심박)
                     }
                     String time = intent.getStringExtra(BluetoothLeService.TIME_DATA);
 
@@ -506,11 +502,10 @@ public class HeartRateActivity extends BaseActivity<HeartRatePresenter> implemen
                             distance_data,
                             step_data);
                 } else {                //실시간 전송
-                    if(pDialog_syncHR.isShowing())
+                    if (pDialog_syncHR.isShowing())
                         pDialog_syncHR.dismiss();
                     Log.d("HL3", "HR 측정 - " + hr_data);
                     displayData(hr_data, spo2_data, distance_data, calories_data, step_data);
-                    VisualStopwatch.getInstance().printElapsedTimeLog("HrDisplay");
                     time_stack = 0;
                     sync_time = getTime();
                 }
@@ -526,23 +521,21 @@ public class HeartRateActivity extends BaseActivity<HeartRatePresenter> implemen
     @Override
     public String convertTime(int time_stack2) {
         String convert_time;
-        String convert_day = sync_time.substring(0,10);
+        String convert_day = sync_time.substring(0, 10);
         time_stack++;
 
-        convert_time = sync_time.substring(11,19);
-        int hh = Integer.parseInt(convert_time.substring(0,2));
-        int mm = Integer.parseInt(convert_time.substring(3,5));
-        int ss = Integer.parseInt(convert_time.substring(6,8));
+        convert_time = sync_time.substring(11, 19);
+        int hh = Integer.parseInt(convert_time.substring(0, 2));
+        int mm = Integer.parseInt(convert_time.substring(3, 5));
+        int ss = Integer.parseInt(convert_time.substring(6, 8));
 
-        for(int i =0; i < time_stack; i++) {
-            ss = ss-(i*30);
-            if(ss < 0)
-            {
-                ss = 60+ss;
+        for (int i = 0; i < time_stack; i++) {
+            ss = ss - (i * 30);
+            if (ss < 0) {
+                ss = 60 + ss;
                 mm--;
-                if(mm < 0)
-                {
-                    mm = 60+mm;
+                if (mm < 0) {
+                    mm = 60 + mm;
                     hh--;
                 }
             }
@@ -553,36 +546,36 @@ public class HeartRateActivity extends BaseActivity<HeartRatePresenter> implemen
 
     @Override
     public String convertCalories(double speed_data) {
-        if(0 < speed_data && speed_data < 5)
+        if (0 < speed_data && speed_data < 5)
             return String.valueOf(3.6);
-        else if(speed_data > 8)
+        else if (speed_data > 8)
             return String.valueOf(8.1);
         else return "0";
     }
 
     @Override
     public String convertDistance(double speed_data) {
-        return String.valueOf(speed_data/1.1);
+        return String.valueOf(speed_data / 1.1);
     }
 
     @Override
     public String convertStep(double distance_data) {
-        return String.valueOf(distance_data/0.629);
+        return String.valueOf(distance_data / 0.629);
     }
 
     private void displayData(String hr_data, String spo2_data, String distance_data, String calories_data, String step_data) {
         if (90 < Integer.valueOf(hr_data) && 200 > Integer.valueOf(hr_data)) {
-            if(Integer.valueOf(hr_data) > (Integer.valueOf(avgValue.getText().toString())*1.4)) {
+            if (Integer.valueOf(hr_data) > (Integer.valueOf(avgValue.getText().toString()) * 1.4)) {
                 CustomDialog notify = new CustomDialog(this, CustomDialog.TYPE_ONEBUTTON);
-                if(Integer.valueOf(hr_data) > 120 || Integer.valueOf(hr_data) > (Integer.valueOf(avgValue.getText().toString())*1.6)) {
+                if (Integer.valueOf(hr_data) > 120 || Integer.valueOf(hr_data) > (Integer.valueOf(avgValue.getText().toString()) * 1.6)) {
                     //위험메시지 출력
-                    notify.setMessage("위험! 위험!\n심박수가 " + Integer.valueOf(hr_data)+  " 입니다.  \n즉시 운동을 그만두세요!");
+                    notify.setMessage("위험! 위험!\n심박수가 " + Integer.valueOf(hr_data) + " 입니다.  \n즉시 운동을 그만두세요!");
                     notify.setOkText("확인");
                     notify.setOkClickListener(v -> notify.dismiss());
                     notify.showDialog();
                 } else {
                     //경고메시지 출력
-                    notify.setMessage("경고! 경고!\n심박수가 " + Integer.valueOf(hr_data)+  " 입니다.");
+                    notify.setMessage("경고! 경고!\n심박수가 " + Integer.valueOf(hr_data) + " 입니다.");
                     notify.setOkText("확인");
                     notify.setOkClickListener(v -> notify.dismiss());
                     notify.showDialog();
@@ -596,7 +589,9 @@ public class HeartRateActivity extends BaseActivity<HeartRatePresenter> implemen
                     distance_data,
                     calories_data,
                     step_data);
-        }else if(60 < Integer.valueOf(hr_data) && 200 > Integer.valueOf(hr_data)) {
+            VisualStopwatch.getInstance().printElapsedTimeLog("HrDisplay");
+            ResponseStopwatch.getInstance().printElapsedTimeLog("HrResponse");
+        } else if (60 < Integer.valueOf(hr_data) && 200 > Integer.valueOf(hr_data)) {
             Log.d("HL3", "HR 측정");
             hr = Integer.valueOf(hr_data);
             heartRatePresenter.setData(this, hr_data, spo2_data);
@@ -606,6 +601,8 @@ public class HeartRateActivity extends BaseActivity<HeartRatePresenter> implemen
                     distance_data,
                     calories_data,
                     step_data);
+            VisualStopwatch.getInstance().printElapsedTimeLog("HrDisplay");
+            ResponseStopwatch.getInstance().printElapsedTimeLog("HrResponse");
         }
     }
 

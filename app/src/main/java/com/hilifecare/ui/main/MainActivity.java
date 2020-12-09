@@ -67,7 +67,7 @@ public class MainActivity extends BaseActivity<MainPresenter>
 
     @Bind(R.id.nav_view)
     NavigationView navigationView;
-    private boolean isAnonymous=true;
+    private boolean isAnonymous = true;
     FirebaseUser user;
     ProgressDialog progressDialog;
 
@@ -77,7 +77,7 @@ public class MainActivity extends BaseActivity<MainPresenter>
 
     protected void injectModule() {
         component = DaggerMainComponent.builder()
-                .applicationComponent(((App)getApplication()).getComponent())
+                .applicationComponent(((App) getApplication()).getComponent())
                 .mainModule(new MainModule(this))
                 .build();
         component.inject(this);
@@ -109,11 +109,11 @@ public class MainActivity extends BaseActivity<MainPresenter>
 
         View headerview = navigationView.inflateHeaderView(R.layout.nav_header_main);
 
-        user_name = (TextView)headerview.findViewById(R.id.user_name);
-        login_logout = (TextView)headerview.findViewById(R.id.login_logout);
-        my_page = (TextView)headerview.findViewById(R.id.my_page);
-        setting = (ImageView)headerview.findViewById(R.id.setting);
-        cancel = (ImageView)headerview.findViewById(R.id.cancel);
+        user_name = (TextView) headerview.findViewById(R.id.user_name);
+        login_logout = (TextView) headerview.findViewById(R.id.login_logout);
+        my_page = (TextView) headerview.findViewById(R.id.my_page);
+        setting = (ImageView) headerview.findViewById(R.id.setting);
+        cancel = (ImageView) headerview.findViewById(R.id.cancel);
 
         login_logout.setOnClickListener(login_logout_click_listener);
         my_page.setOnClickListener(my_page_click_listener);
@@ -143,7 +143,7 @@ public class MainActivity extends BaseActivity<MainPresenter>
             isAnonymous = true;
         }
 
-        if(isAnonymous) {
+        if (isAnonymous) {
             user_name.setText("Guest");
             login_logout.setText("로그인");
         } else {
@@ -153,57 +153,56 @@ public class MainActivity extends BaseActivity<MainPresenter>
     }
 
 
-
     @OnClick(R.id.toolbar_left)
-    void goBack(){
-        if(fragment instanceof MainFragment){
+    void goBack() {
+        if (fragment instanceof MainFragment) {
             onBackPressed();
-        }else{
+        } else {
             setFragment(new MainFragment(), "");
             goFragment(fragment);
         }
     }
 
     private View.OnClickListener setting_click_listener = v -> {
-        if(isAnonymous) {
+        if (isAnonymous) {
 
-                } else {
-                    Intent i = new Intent(getApplicationContext(), SettingActivity.class);
-                    i.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                    startActivity(i);
+        } else {
+            Intent i = new Intent(getApplicationContext(), SettingActivity.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+            startActivity(i);
         }
-            };
+    };
 
     private View.OnClickListener login_logout_click_listener = v -> {
-        if(isAnonymous) {
-                    Intent i = new Intent(getApplication(), LoginActivity.class);
-                    i.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                    startActivity(i);
+        if (isAnonymous) {
+            Intent i = new Intent(getApplication(), LoginActivity.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+            startActivity(i);
         } else {
-                    Toast.makeText(getApplicationContext(), "로그아웃",
-                            Toast.LENGTH_SHORT).show();
-                    FirebaseAuth.getInstance().signOut();
-                    onResume();
-                }
-            };
+            Toast.makeText(getApplicationContext(), "로그아웃",
+                    Toast.LENGTH_SHORT).show();
+            FirebaseAuth.getInstance().signOut();
+            onResume();
+        }
+    };
 
     private View.OnClickListener my_page_click_listener = v -> {
-                if(isAnonymous) {
+        if (isAnonymous) {
 
-                } else {
-                    Intent i = new Intent(getApplicationContext(), MyPageActivity.class);
-                    i.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                    startActivity(i);
-                }
-            };
+        } else {
+            Intent i = new Intent(getApplicationContext(), MyPageActivity.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+            startActivity(i);
+        }
+    };
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int flag = 0;
-        switch(item.getItemId()) {
+        switch (item.getItemId()) {
             case R.id.plan_fragment:
-                if(isAnonymous) {
+                if (isAnonymous) {
                     Toast.makeText(getApplicationContext(), "로그인이 필요합니다.",
                             Toast.LENGTH_SHORT).show();
                 } else {
@@ -223,7 +222,7 @@ public class MainActivity extends BaseActivity<MainPresenter>
                 mainPresenter.getExercise(this, progressDialog, fragment);
                 break;
             case R.id.my_record_fragment:
-                if(getmDeviceAddress() == null) {
+                if (getmDeviceAddress() == null) {
                     progressDialog = new ProgressDialog(this);
                     progressDialog.setMessage("Loading...");
                     progressDialog.show();
@@ -233,7 +232,7 @@ public class MainActivity extends BaseActivity<MainPresenter>
                 break;
         }
 
-        if(fragment != null && flag == 0) {
+        if (fragment != null && flag == 0) {
             goFragment(fragment);
             return true;
         } else
@@ -242,15 +241,15 @@ public class MainActivity extends BaseActivity<MainPresenter>
 
     public void setFragment(Fragment fragment, String title) {
         this.fragment = fragment;
-        if(fragment instanceof MainFragment){
+        if (fragment instanceof MainFragment) {
             toolbar.initView("blue");
             toolbar.setToolbarLeftVisibility(View.INVISIBLE);
             drawer.setBackground(this.getDrawable(R.drawable.bg_fragment_main));
-        }else if(fragment instanceof MyRecordFragment) {
+        } else if (fragment instanceof MyRecordFragment) {
             toolbar.initView("orange");
             toolbar.setToolbarLeftVisibility(View.VISIBLE);
             drawer.setBackgroundColor(this.getResources().getColor(R.color.white));
-        }else{
+        } else {
             toolbar.initView("purple");
             toolbar.setToolbarLeftVisibility(View.VISIBLE);
             drawer.setBackgroundColor(this.getResources().getColor(R.color.white));
@@ -266,8 +265,8 @@ public class MainActivity extends BaseActivity<MainPresenter>
         drawer.closeDrawer(Gravity.RIGHT);
     }
 
-    public void goFragment(){
-        if(fragment != null) goFragment(fragment);
+    public void goFragment() {
+        if (fragment != null) goFragment(fragment);
     }
 
     @Override
@@ -278,7 +277,7 @@ public class MainActivity extends BaseActivity<MainPresenter>
     @Override
     public void updatePlanList(ArrayList<Plan> planArrayList) {
         this.planArrayList = planArrayList;
-        if(planArrayList.size() == 0) {
+        if (planArrayList.size() == 0) {
             Toast.makeText(this, "등록된 운동 처방이 없습니다. 플랜을 등록해주세요.", Toast.LENGTH_LONG).show();
         } else {
             Intent i = new Intent(this, PlanDetailActivity.class);

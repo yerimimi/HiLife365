@@ -115,7 +115,6 @@ public class EmgService extends Service {
         public void onCharacteristicChanged(BluetoothGatt gatt,
                                             BluetoothGattCharacteristic characteristic) {
             broadcastUpdate(ACTION_DATA_AVAILABLE, characteristic);
-            //EmgStopwatch.getInstance().reset();
         }
     };
 
@@ -272,7 +271,6 @@ public class EmgService extends Service {
             bluetoothGatt = bluetoothDevice.connectGatt(this, true, bluetoothGattCallback);
             bioHealthcoreServiceState = true;
             Log.d(TAG, "connected address  : " + address);
-            //EmgStopwatch.getInstance().printElapsedTimeLog("EmgConnected");
         }
         bluetoothGatt.requestConnectionPriority(BluetoothGatt.CONNECTION_PRIORITY_BALANCED);
         return true;
@@ -397,7 +395,6 @@ public class EmgService extends Service {
             if (bleScanner != null) {
                 Log.d(TAG, "LeScanStart()");
                 bleScanner.startScan(mScanCallback);
-                //EmgStopwatch.getInstance().reset();
             } else {
                 Log.e(TAG, "Unable to obtain a LeScanner.");
             }
@@ -461,9 +458,9 @@ public class EmgService extends Service {
             if ((device.getName() != null) && !device.getName().isEmpty()) {
                 for (String filterDeviceName : getFilterDeviceName()) {
                     if (device.getName().contains(filterDeviceName)) {
-                        if (device.getName().contains(filterDeviceName)) {
-                            broadcastUpdate(ACTION_FIND_DEVICE, device.getName(), device.getAddress());
-                            EmgStopwatch.getInstance().reset();
+                                if (device.getName().contains(filterDeviceName)) {
+                                    broadcastUpdate(ACTION_FIND_DEVICE, device.getName(), device.getAddress());
+                                    EmgStopwatch.getInstance().reset();
                         }
                     }
                 }
