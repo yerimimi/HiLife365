@@ -1,0 +1,75 @@
+<resources>
+    <string name="app_name">Hi Life 365</string>
+    <string name="login_name">로그인</string>
+    <string name="sign_up_name">회원가입</string>
+    <string name="intro_name" />
+    <string name="plan_name">&#xB098;&#xB9CC;&#xC758; &#xC6B4;&#xB3D9; &#xCC98;&#xBC29;</string>
+    <string name="level_test_name">LevelTestHipsterActivity</string>
+    <string name="exercise_name">ExerciseHipsterActivity</string>
+    <string name="program_name">&#xD504;&#xB85C;&#xADF8;&#xB7A8;</string>
+    <string name="schdule_name">SchduleHipsterActivity</string>
+    <string name="plan_detail_name">&#xCD94;&#xCC9C; &#xD2B8;&#xB808;&#xC774;&#xB2DD; &#xD50C;&#xB79C;</string>
+    <string name="exercise_list_name">&#xC6B4;&#xB3D9; &#xD504;&#xB85C;&#xADF8;&#xB7A8; &#xBC0F; &#xAC1C;&#xBCC4; &#xC601;&#xC0C1;</string>
+    <string name="splash_name">SplashHipsterActivity</string>
+    <string name="exercise_medium">MEDIUM</string>
+    <string name="exercise_high">HIGH</string>
+    <string name="exercise_regular">REGULAR</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="level_test_result_name">LevelTestResultHipsterActivity</string>
+    <string name="user_detail_info_name">UserDetailInfoHipsterActivity</string>
+    <string name="my_page_name">MyPageHipsterActivity</string>
+
+    <string name="signup_title">회원가입</string>
+    <string name="signup_button">Sign Up</string>
+    <string name="drawer_title">님, 안녕하세요</string>
+    <string name="drawer_login">로그인</string>
+    <string name="drawer_logout">로그아웃</string>
+    <string name="drawer_mypage">마이페이지</string>
+    <string name="setting_title">설정</string>
+    <string name="setting_version">버전정보</string>
+    <string name="setting_contract">이용약관</string>
+    <string name="setting_privacy">개인정보 취급 방침</string>
+    <string name="mypage_title">마이페이지</string>
+    <string name="mypage_init_plan">플랜 초기화</string>
+    <string name="mypage_edit_profile">개인정보 수정</string>
+    <string name="mypage_logout">LOGOUT</string>
+    <string name="leveltest_title">LEVEL TEST</string>
+    <string name="leveltest_desc">레벨테스트를 완료하였습니다.</string>
+    <string name="leveltest_pushup">푸시업</string>
+    <string name="leveltest_one_leg">한 발 서기</string>
+    <string name="leveltest_button">테스트 결과</string>
+    <string name="preview_program_name">운동 프로그램 미리보기</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="preview_desc_2">레벨테스트를 통해 <![CDATA[<font color=\'#80E58F\'>자신에게 최적화된 트레이닝 프로그램</font>]]>을 만나보세요.</string>
+    <string name="preview_desc_1">본 미리보기는 레벨테스트 없이 \n운동 프로그램을 미리 경험해볼 수 있습니다.</string>
+    <string name="leveltest_stop_message">레벨테스트를 종료하시겠습니까?\n테스트를 끝까지 완료하시면\n다양한 운동을 이용하실 수 있습니다.</string>
+    <string name="previewprogram_stop_message">운동 미리보기를 종료하시겠습니까?</string>
+    <string name="myrecord_title">나의 기록</string>
+    <string name="calorie_title">칼로리 소모량</string>
+    <string name="heartrate_title">심박수 보기</string>
+    <string name="stepcount_title">걸음 수/분</string>
+    <string name="emg_title">EMG 보기</string>
+    <string name="level_test_result_title">레벨테스트</string>
+
+    <string name="ble_not_supported">BLE is not supported</string>
+    <string name="label_data">Data:</string>
+    <string name="label_device_address">Device address:</string>
+    <string name="label_state">State:</string>
+    <string name="no_data">No data</string>
+    <string name="connected">Connected</string>
+    <string name="disconnected">Disconnected</string>
+    <string name="title_devices">BLE Device Scan</string>
+    <string name="error_bluetooth_not_supported">Bluetooth not supported.</string>
+
+    <string name="unknown_device">Unknown device</string>
+    <string name="unknown_characteristic">Unknown characteristic</string>
+    <string name="unknown_service">Unknown service</string>
+
+    <!-- Menu items -->
+    <string name="menu_connect">Connect</string>
+    <string name="menu_disconnect">Disconnect</string>
+    <string name="menu_scan">Scan</string>
+    <string name="menu_stop">Stop</string>
+</resources>

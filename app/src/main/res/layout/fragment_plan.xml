@@ -1,0 +1,153 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/fragment_plan"
+    tools:ignore="MissingPrefix">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="5"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/plan_icon_size"
+                android:layout_marginBottom="12dp"
+                android:src="@drawable/icon_level1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    fontPath="fonts/NotoSansKR-Bold-Hestia.otf"
+                    android:id="@+id/user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="홍길동"
+                    android:textSize="@dimen/text_pt_48" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="님의 운동레벨"
+                    android:textSize="@dimen/text_pt_48" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView2"
+                fontPath="fonts/Aero-Matics-Display-Regular.ttf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="GOOD"
+                android:textColor="@color/colorPurpleBg"
+                android:textSize="@dimen/text_pt_120" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/recommend_plan"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_plan_recommend"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/recommend_image"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/plan_icon_size"
+                android:layout_centerVertical="true"
+                android:adjustViewBounds="true"
+                android:src="@drawable/icon_recommend" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="13dp"
+                android:layout_toRightOf="@+id/recommend_image"
+                android:orientation="vertical">
+
+                <TextView
+                    fontPath="fonts/NotoSansKR-Bold-Hestia.otf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="13dp"
+                    android:text="Hyoil 1주 플랜"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_pt_60" />
+
+                <TextView
+                    fontPath="fonts/NotoSansKR-Medium-Hestia.otf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="3"
+                    android:text="안정성관 유연성을 극대화한 Hyoill과 함께 정확한 자세로 당신의 가슴을 강화해 보세요."
+                    android:textSize="@dimen/text_pt_40"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/bg_recommend_icon"
+                android:paddingBottom="3dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="3dp"
+                android:text="추천 플랜"
+                android:textColor="@color/white"
+                android:textSize="10dp" />
+        </RelativeLayout>
+        <ScrollView
+            android:id="@+id/scroll_view"
+            android:layout_width="match_parent"
+            android:scrollbars="vertical"
+            android:scrollbarStyle="outsideOverlay"
+            android:layout_height="0dp"
+            android:layout_weight="2">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <ListView
+                    android:id="@+id/user_plan_listview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/textView"
+                    tools:listitem="@layout/plan_item">
+                </ListView>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorTextLight"/>
+            </LinearLayout>
+        </ScrollView>
+
+        <Button
+            android:id="@+id/btn_plan_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_margin="5dp"
+            android:backgroundTint="@color/cardview_light_background"
+            android:text="플랜 추가하기"
+            android:textColor="@color/colorPurpleBg" />
+    </LinearLayout>
+</LinearLayout>

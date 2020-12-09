@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/guideline_header"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:weightSum="7"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/screen_margin_right"
+        android:paddingRight="@dimen/screen_left_margin"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_below="@+id/textView">
+        <TextView
+            android:id="@+id/leveltest_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:layout_gravity="center_vertical"
+            android:text="동작명"/>
+        <LinearLayout
+            android:id="@+id/gender_container"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:gravity="center"
+                android:background="@drawable/bg_guideline_man"
+                android:layout_marginBottom="3dp"
+                android:textColor="@color/white"
+                android:text="남"/>
+            <TextView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:gravity="center"
+                android:background="@drawable/bg_guideline_woman"
+                android:textColor="@color/white"
+                android:text="여"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+            <include layout="@layout/guideline_table" android:id="@+id/men_guideline_table" />
+            <include layout="@layout/guideline_table" android:id="@+id/women_guideline_table"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorTextLight"
+        android:layout_below="@+id/guideline_header"/>
+</RelativeLayout>

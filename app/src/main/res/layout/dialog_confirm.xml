@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingPrefix">
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="@dimen/dialog_width"
+        android:layout_height="@dimen/dialog_height"
+        android:layout_gravity="center">
+        <TextView
+            android:id="@+id/dialog_message"
+            android:layout_width="match_parent"
+            android:layout_height="116dp"
+            android:background="@drawable/bg_dialog"
+            android:gravity="center"
+            android:textSize="@dimen/dialog_text_size"
+            android:text="로그아웃 하시겠습니까?"
+            fontPath="fonts/NotoSansKR-Medium-Hestia.otf"/>
+        <ImageView
+            android:id="@+id/cancel"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:src="@drawable/icon_cancel_gray"
+            android:padding="15dp"
+            android:layout_alignParentRight="true"/>
+        <Button
+            android:id="@+id/dialog_button_ok"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dialog_button_height"
+            android:background="@drawable/bg_dialog_button"
+            android:layout_alignParentBottom="true"
+            android:text="다시 시도"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_pt_60"/>
+    </RelativeLayout>
+</FrameLayout>

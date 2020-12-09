@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:id="@+id/playing_exercise_view_background"
+    tools:ignore="MissingPrefix">
+    <com.hilifecare.ui.view.CustomToolbar
+        android:id="@id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        custom:type="green"/>
+    <com.hilifecare.ui.view.PlayingExercisePreviewtView
+        android:id="@+id/playing_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        custom:type="green"/>
+    <LinearLayout
+        android:id="@+id/preview_start_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/playing_progress_height"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:layout_below="@+id/toolbar">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/preview_program_image_height"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/dummy_image"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Trial Version"
+                android:textSize="@dimen/text_pt_122"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:background="@color/colorBlur"/>
+        </FrameLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:paddingTop="20dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="20dp"
+                android:id="@+id/linearLayout5">
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:layout_marginRight="5dp"
+                    android:src="@drawable/icon_program"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_pt_60"
+                    android:layout_gravity="center_vertical"
+                    android:text="운동 프로그램 미리보기"/>
+            </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            android:scrollbarStyle="outsideOverlay"
+            android:layout_below="@+id/linearLayout5"
+            android:layout_alignParentStart="true"
+            android:layout_above="@+id/preview_start"
+            android:layout_marginBottom="15dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_pt_48"
+                    android:lineSpacingExtra="5dp"
+                    android:layout_marginBottom="15dp"
+                    android:text="@string/preview_desc_1"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_pt_48"
+                        android:lineSpacingExtra="5dp"
+                        android:text="레벨 테스트를 통해 "/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_pt_48"
+                        android:textColor="@color/colorGreenBg"
+                        android:lineSpacingExtra="5dp"
+                        android:text="자신에게 최적화된"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_pt_48"
+                        android:textColor="@color/colorGreenBg"
+                        android:lineSpacingExtra="5dp"
+                        android:text="트레이닝 프로그램"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_pt_48"
+                        android:lineSpacingExtra="5dp"
+                        android:text="을 만나보세요."/>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+            <TextView
+                android:id="@+id/preview_start"
+                android:layout_width="@dimen/button_width"
+                android:layout_height="@dimen/button_height"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/bg_button_orange"
+                android:layout_marginBottom="30dp"
+                android:gravity="center"
+                android:text="미리보기 시작"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_pt_60"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </LinearLayout>
+    <!--<include-->
+        <!--android:id="@+id/toolbar"-->
+        <!--layout="@layout/toolbar_green"/>-->
+
+
+
+</RelativeLayout>
+
+

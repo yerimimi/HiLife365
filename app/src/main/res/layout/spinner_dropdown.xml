@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    tools:ignore="MissingPrefix">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        tools:ignore="MissingPrefix"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:paddingRight="@dimen/screen_margin_right"
+        android:paddingLeft="@dimen/screen_left_margin">
+        <TextView
+            android:layout_toRightOf="@+id/bullet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="22dp"
+            android:id="@+id/spinner_text"
+            android:text="부위별"
+            android:textSize="@dimen/text_pt_52"
+            android:layout_gravity="center"
+            fontPath="fonts/Aero-Matics-Display-Bold.ttf"/>
+        <ImageView
+            android:id="@+id/spinner_check"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:adjustViewBounds="true"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:visibility="invisible"
+            android:src="@drawable/icon_check_purple"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorTextLight"/>
+</LinearLayout>

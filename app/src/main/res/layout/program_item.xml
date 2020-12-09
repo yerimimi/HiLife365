@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:paddingTop="24dp"
+    android:paddingLeft="@dimen/screen_left_margin"
+    android:paddingRight="@dimen/screen_margin_right"
+    tools:ignore="MissingPrefix">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="6"
+            android:orientation="vertical"
+            android:paddingRight="20dp">
+
+            <TextView
+                android:id="@+id/program_name"
+                fontPath="fonts/Aero-Matics-Display-Bold.ttf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1 WEEK / DAY 1"
+                android:textColor="@color/colorPurpleBg"
+                android:textSize="@dimen/text_pt_48"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/program_explain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="기본 근력 키우기"
+                android:textSize="@dimen/text_pt_48" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="bottom"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/program_clock_height"
+                    android:layout_height="@dimen/program_clock_height"
+                    android:src="@drawable/icon_clock" />
+
+                <TextView
+                    android:id="@+id/program_time"
+                    fontPath="fonts/Aero-Matics-Display-Regular.ttf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10"
+                    android:textColor="@color/colorPurpleBg"
+                    android:textSize="@dimen/text_pt_60" />
+
+                <TextView
+                    fontPath="fonts/Aero-Matics-Display-Regular.ttf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MIN"
+                    android:textColor="@color/colorPurpleBg" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/program_image"
+            android:layout_width="158dp"
+            android:layout_height="@dimen/plan_detail_item_image_height"
+            android:adjustViewBounds="true"
+            android:paddingRight="8dp"
+            android:src="@drawable/dummy_image" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"/>
+</LinearLayout>

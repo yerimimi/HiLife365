@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/preview_program_image_height"
+    android:layout_gravity="bottom"
+    android:background="@color/colorBlackHalf"
+    android:visibility="invisible"
+    android:id="@+id/preview_end">
+    <TextView
+        android:id="@+id/complete_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="complete description"
+        android:textColor="@color/white"
+        android:layout_centerInParent="true"/>
+    <LinearLayout
+        android:id="@+id/preview_end_next_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="@dimen/screen_margin_right"
+        android:layout_marginBottom="16dp">
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:adjustViewBounds="true"
+            android:padding="4dp"
+            android:src="@drawable/icon_next"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_pt_60"
+            android:text="NEXT"/>
+    </LinearLayout>
+</RelativeLayout>
