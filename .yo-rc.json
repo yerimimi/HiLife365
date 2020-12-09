@@ -1,0 +1,54 @@
+{
+  "generator-jhipster": {
+    "jhipsterVersion": "3.12.2",
+    "baseName": "HyoilCTA",
+    "packageName": "com.hyoil",
+    "packageFolder": "com/hyoil",
+    "serverPort": "8080",
+    "authenticationType": "session",
+    "hibernateCache": "ehcache",
+    "clusteredHttpSession": false,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "buildTool": "gradle",
+    "enableSocialSignIn": false,
+    "rememberMeKey": "1d66ea7f759df9a8e2f1eb9d99c7e7f6820f85fa",
+    "useSass": false,
+    "applicationType": "monolith",
+    "testFrameworks": [
+      "gatling"
+    ],
+    "jhiPrefix": "jhi",
+    "enableTranslation": false
+  },
+  "generator-android-hipster": {
+    "appPackage": "com.hilifecare",
+    "appName": "HilifeCare",
+    "language": "java",
+    "nucleus": true,
+    "mvp": "nucleus",
+    "imageLib": "glide",
+    "picasso": false,
+    "glide": true,
+    "eventbus": true,
+    "mixpanel": true,
+    "timber": true,
+    "jodatime": false,
+    "threetenabp": true,
+    "jodamoney": true,
+    "butterknife": true,
+    "androidTargetSdkVersion": "23",
+    "minSdk": "19",
+    "calligraphy": true,
+    "playServices": [
+      "base"
+    ],
+    "stetho": true,
+    "printview": true,
+    "autoparcel": true
+  }
+}
