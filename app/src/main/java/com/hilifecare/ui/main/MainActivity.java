@@ -36,6 +36,7 @@ import com.hilifecare.ui.myrecord.MyRecordFragment;
 import com.hilifecare.ui.plan.PlanAddFragment;
 import com.hilifecare.ui.plan.PlanDetailActivity;
 import com.hilifecare.ui.plan.PlanFragment;
+import com.hilifecare.ui.program.ProgramActivity;
 import com.hilifecare.ui.setting.SettingActivity;
 import com.hilifecare.ui.view.CustomToolbar;
 import com.hilifecare.util.logging.ScreenStopwatch;
@@ -321,9 +322,6 @@ public class MainActivity extends BaseActivity<MainPresenter>
 
     @Override
     protected void onStart() {
-        ScreenStopwatch.getInstance().printElapsedTimeLog("MainActivity"); // 다른 화면이 나타날 때
-        HiExerciseFilter filterForTest = new HiExerciseFilter();
-        Log.i("TEST", filterForTest.toString());
         super.onStart();
     }
 

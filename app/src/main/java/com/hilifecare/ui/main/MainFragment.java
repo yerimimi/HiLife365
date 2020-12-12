@@ -53,6 +53,7 @@ public class MainFragment extends BaseFragment<EmptyPresenter> {
 
     @Override
     public void onStart() {
+        ScreenStopwatch.getInstance().printElapsedTimeLog("MainFragment"); // 다른 화면이 나타날 때
         super.onStart();
     }
 
