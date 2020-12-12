@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="MissingPrefix">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/video_small_screen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:layout_marginRight="@dimen/screen_margin_right"
+            android:visibility="invisible">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="16dp"
+                android:adjustViewBounds="true"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/icon_back_fullscreen"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16dp"
+                android:text="EXIT SESSION"
+                android:layout_gravity="center_vertical"
+                fontPath="fonts/Aero-Matics-Display-Regular.ttf"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/leveltest_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:textColor="@color/white"
+            android:text=""/>
+
+        <TextView android:id="@+id/time"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_gravity="right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:textColor="@color/white"
+            android:text=""
+            fontPath="fonts/Aero-Matics-Display-Regular.ttf"/>
+
+        <LinearLayout
+            android:visibility="invisible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="4dip"
+            android:background="#CC000000"
+            android:orientation="horizontal">
+
+            <ImageButton android:id="@+id/rew"
+                style="@android:style/MediaButton.Rew"
+                />
+
+            <ImageButton android:id="@+id/ffwd"
+                style="@android:style/MediaButton.Ffwd"
+                />
+
+        </LinearLayout>
+
+    </FrameLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/count_before_start"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="5"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/text_pt_267"
+            fontPath="fonts/Aero-Matics-Display-Regular.ttf"/>
+        <LinearLayout
+            android:id="@+id/video_count_container"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:paddingLeft="@dimen/screen_left_margin"
+            android:paddingBottom="16dp">
+            <TextView
+                android:id="@+id/video_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="05"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_pt_120"
+                fontPath="fonts/Aero-Matics-Display-Bold.ttf"/>
+            <TextView
+                android:id="@+id/video_count_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="회"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_pt_72"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true">
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:text="00:00"
+                android:id="@+id/time_current"
+                android:layout_alignParentStart="true"
+                android:textSize="15dp"
+                android:textColor="@color/white"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                fontPath="fonts/Aero-Matics-Display-Regular.ttf"/>
+
+            <SeekBar
+                android:id="@+id/progress"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/playing_progress_height"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:minHeight="@dimen/playing_progress_height"
+                android:maxHeight="@dimen/playing_progress_height"
+                android:progressDrawable="@drawable/progress_blue_land"
+                android:thumb="@android:color/transparent"
+                style="?android:attr/progressBarStyleHorizontal"/>
+
+            <FrameLayout
+                android:id="@+id/video_start_container"
+                android:visibility="visible"
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/black">
+                <ImageView android:id="@+id/prev"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:adjustViewBounds="true"
+                    android:padding="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/icon_fullscreen_prev"/>
+
+                <ImageView android:id="@+id/video_start_pause"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:adjustViewBounds="true"
+                    android:padding="10dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/icon_fullscreen_play"/>
+
+                <ImageView android:id="@+id/next"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:adjustViewBounds="true"
+                    android:padding="10dp"
+                    android:layout_gravity="center_vertical|right"
+                    android:src="@drawable/icon_fullscreen_next"/>
+            </FrameLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+</FrameLayout>

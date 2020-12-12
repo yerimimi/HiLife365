@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:weightSum="5"
+    android:id="@+id/activity_plan_detail"
+    tools:ignore="MissingPrefix">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_purple"/>
+        <RelativeLayout
+            android:id="@+id/plan_detail_title"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.5">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:id="@+id/plan_image"
+                android:background="@drawable/bg_fragment_plan"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
+
+            <ImageView
+                android:layout_width="@dimen/icon_level_height"
+                android:layout_height="@dimen/icon_level_height"
+                android:adjustViewBounds="true"
+                android:src="@drawable/icon_level1"
+                android:layout_marginTop="11dp"
+                android:layout_marginRight="@dimen/screen_margin_right"
+                android:layout_alignParentRight="true"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:id="@+id/plan_explain"
+                android:text="default explain"
+                android:textSize="@dimen/text_pt_48"
+                android:background="@color/whiteHalf"
+                android:gravity="left"
+                android:paddingTop="30dp"
+                android:paddingLeft="@dimen/screen_left_margin"
+                android:layout_alignBaseline="@+id/plan_name"
+                android:layout_alignBottom="@+id/plan_name"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="@dimen/plan_detail_title_width"
+                android:layout_height="@dimen/program_name_height"
+                android:id="@+id/plan_name"
+                android:text="default name"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_pt_60"
+                android:textStyle="bold"
+                android:gravity="center_vertical"
+                android:layout_centerVertical="true"
+                android:background="@drawable/bg_plan_title"/>
+        </RelativeLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:id="@+id/schedule_recyclerview"
+        tools:listitem="@layout/program_item"
+        android:layout_below="@+id/plan_detail_title"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/start_plan_button">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <Button
+        android:enabled="false"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:text="Plan start"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_pt_72"
+        android:id="@+id/start_plan_button"
+        android:background="@color/colorBlueBt"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        fontPath="fonts/Aero-Matics-Display-Bold.ttf"/>
+
+</LinearLayout>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="body_part">
+        <item>가슴</item>
+        <item>등</item>
+        <item>허벅지</item>
+        <item>종아리</item>
+        <item>상완근</item>
+        <item>전완근</item>
+        <item>복부</item>
+    </string-array>
+    <string-array name="body_part_en">
+        <item>PACTORALIS</item>
+        <item>BACK MUSCLES</item>
+        <item>THIGH MUSCLES</item>
+        <item>CALF MUSCLES</item>
+        <item>BRACHIALIS MUSCLES</item>
+        <item>FOREARM MUSCLES</item>
+        <item>ABDOMINAL MUSCLES</item>
+    </string-array>
+</resources>

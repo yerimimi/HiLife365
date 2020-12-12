@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/screen_margin_right"
+    android:layout_gravity="bottom"
+    android:id="@+id/exercise_description_view"
+    android:background="@color/colorGrayBg">
+    <TextView
+        android:id="@+id/description_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="10dp"
+        android:text="자세 유지시간 측정하기"
+        android:textSize="@dimen/text_pt_60"
+        android:textColor="@color/white"/>
+    <TextView
+        android:id="@+id/description_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/description_title"
+        android:textColor="@color/white"
+        android:text="휴대폰을 쥐고 손으로 스크린을 누른 상태로\n눈을 감고 한 발 서기 자세를 유지하세요. "/>
+    <LinearLayout
+        android:id="@+id/description_next_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="@dimen/screen_margin_right"
+        android:layout_marginBottom="16dp">
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:adjustViewBounds="true"
+            android:padding="4dp"
+            android:src="@drawable/icon_next"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_pt_60"
+            android:text="NEXT"/>
+    </LinearLayout>
+</RelativeLayout>

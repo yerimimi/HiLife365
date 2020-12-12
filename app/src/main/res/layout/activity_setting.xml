@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical">
+    <include layout="@layout/toolbar_setting"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/setting_padding_lr"
+        android:paddingRight="@dimen/setting_padding_lr"
+        android:paddingTop="@dimen/setting_padding_top">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/setting_text_height"
+                android:layout_marginBottom="@dimen/setting_text_margin_bottom"
+                android:background="@drawable/bg_setting"
+                android:gravity="center_vertical"
+                android:text="@string/setting_version"
+                android:textSize="@dimen/text_pt_52"/>
+
+            <TextView
+                android:id="@+id/version"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/setting_text_height"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginRight="20dp"
+                android:gravity="center_vertical"
+                android:paddingBottom="8dp"
+                android:text="V.1.0"
+                android:textSize="@dimen/text_pt_52"/>
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/contract"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/setting_text_height"
+            android:layout_marginBottom="@dimen/setting_text_margin_bottom"
+            android:background="@drawable/bg_setting"
+            android:gravity="center_vertical"
+            android:text="@string/setting_contract"
+            android:textSize="@dimen/text_pt_52"/>
+
+        <TextView
+            android:id="@+id/privacy"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/setting_text_height"
+            android:layout_marginBottom="@dimen/setting_text_margin_bottom"
+            android:background="@drawable/bg_setting"
+            android:gravity="center_vertical"
+            android:text="@string/setting_privacy"
+            android:textSize="@dimen/text_pt_52"/>
+    </LinearLayout>
+</LinearLayout>

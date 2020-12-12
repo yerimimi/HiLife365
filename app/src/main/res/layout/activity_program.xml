@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="14"
+    android:id="@+id/activity_program"
+    tools:ignore="MissingPrefix">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_purple"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/toolbar"
+        android:scaleType="fitCenter"
+        android:src="@drawable/dummy_image"/>
+
+    <TextView
+        android:layout_width="@dimen/program_title_width"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/program_name"
+        android:gravity="center_vertical"
+        android:text="1 WEEK / STEP 1"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="@dimen/text_pt_60"
+        android:background="@drawable/bg_plan_title" />
+
+    <LinearLayout
+        android:id="@+id/preview_program_desc"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:weightSum="5"
+        android:orientation="vertical"
+        android:layout_below="@+id/program_image"
+        android:layout_above="@+id/program_construction_button"
+        android:paddingTop="40dp"
+        android:paddingLeft="@dimen/screen_left_margin">
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:id="@+id/program_explain"
+            android:layout_above="@+id/program_construction_button"
+            android:layout_alignParentStart="true"
+            android:textSize="@dimen/text_pt_48"
+            fontPath="fonts/NotoSansKR-Medium-Hestia.otf"
+            android:text="전신 복합 운동을 통해 체지방을 줄이고\n부위별 근육 운동으로 바디라인을 변화시켜 보세요."/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="bottom">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_pt_60"
+                android:textColor="@color/colorPurpleBg"
+                fontPath="fonts/Aero-Matics-Display-Bold.ttf"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="bottom"
+                android:layout_below="@+id/preview_program_desc_step"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/program_clock_height"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/icon_clock"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_pt_60"
+                    android:textColor="@color/colorPurpleBg"
+                    android:id="@+id/program_time"
+                    android:text="10"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
+                    fontPath="fonts/Aero-Matics-Display-Regular.ttf"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPurpleBg"
+                    android:text="MIN"
+                    fontPath="fonts/Aero-Matics-Display-Regular.ttf"/>
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LEVEL"
+                android:textSize="@dimen/text_pt_48"
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                fontPath="fonts/Aero-Matics-Display-Regular.ttf"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/icon_level_height"
+                android:adjustViewBounds="true"
+                android:src="@drawable/icon_level1"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/program_construction_button"
+        android:text="프로그램 구성"
+        android:textSize="@dimen/text_pt_60"
+        android:textColor="@color/white"
+        android:layout_above="@+id/program_start_button"
+        android:background="@color/colorBlueBt"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/program_start_button"
+        android:text="프로그램 시작"
+        android:textSize="@dimen/text_pt_60"
+        android:textColor="@color/white"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPurpleBg" />
+
+    <RelativeLayout
+        android:id="@+id/program_construction_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:visibility="invisible"/>
+</LinearLayout>

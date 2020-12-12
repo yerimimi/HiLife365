@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/plan_item_height"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:padding="20dp"
+    tools:ignore="MissingPrefix">
+    <LinearLayout
+        android:layout_width="96dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:paddingRight="20dp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/plan_icon_size"
+            android:src="@drawable/icon_level1"
+            android:adjustViewBounds="true"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/colorTextLight"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="9dp">
+
+        <TextView
+            android:id="@+id/plan_name"
+            fontPath="fonts/NotoSansKR-Bold-Hestia.otf"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="13dp"
+            android:gravity="left"
+            android:text="중급자를 위한 전신 2주 플랜"
+            android:textSize="@dimen/text_pt_60" />
+
+        <TextView
+            android:id="@+id/plan_explain"
+            fontPath="fonts/NotoSansKR-Medium-Hestia.otf"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:textSize="@dimen/text_pt_40"
+            android:text="4주간의 중강도 전신운동 플랜을 통해 전신 근육량 증가에 도움이 되는 퍼포먼스를 만들어 보세요." />
+
+    </LinearLayout>
+</LinearLayout>

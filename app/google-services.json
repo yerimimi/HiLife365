@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "627728855838",
+    "firebase_url": "https://hilifecare-a7c4e.firebaseio.com",
+    "project_id": "hilifecare-a7c4e",
+    "storage_bucket": "hilifecare-a7c4e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:627728855838:android:61e924d655ddc613",
+        "android_client_info": {
+          "package_name": "com.hilifecare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "627728855838-d0ffvlsgc56hnvcehmt2aln7pco3mr4p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hilifecare",
+            "certificate_hash": "da280e7c331bcc64c7a8ad8119cfe1df8c9bb482"
+          }
+        },
+        {
+          "client_id": "627728855838-29orr8bhhnvnv2f1lc81g4e06gctkcpq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJAUPfHzlDwJVbagSP1K_hOrcZNP5CRAA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "627728855838-29orr8bhhnvnv2f1lc81g4e06gctkcpq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
