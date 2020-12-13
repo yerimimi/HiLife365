@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:id="@+id/program_construction_background">
+
+    <FrameLayout
+        android:id="@+id/construction_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/colorPurpleBg">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="프로그램 구성"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_pt_60"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"/>
+        <ImageView
+            android:id="@+id/construction_cancel"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_gravity="right"
+            android:src="@drawable/icon_cancel"
+            android:padding="16dp"
+            android:layout_alignParentRight="true"/>
+    </FrameLayout>
+
+    <ExpandableListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/construction_listview"
+        tools:listitem="@layout/exercise_list_child"
+        android:layout_below="@+id/construction_title">
+    </ExpandableListView>
+
+</RelativeLayout>

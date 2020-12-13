@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/drawer_header_height"
+    android:background="@color/colorPrimary"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+    <ImageView
+        android:id="@+id/setting"
+        android:layout_width="43dp"
+        android:layout_height="43dp"
+        android:src="@drawable/icon_setting"
+        android:layout_alignParentLeft="true"
+        android:padding="8dp" />
+
+    <ImageView
+        android:id="@+id/cancel"
+        android:layout_width="43dp"
+        android:layout_height="43dp"
+        android:src="@drawable/icon_cancel"
+        android:padding="10dp"
+        android:layout_alignParentRight="true"/>
+
+    <TextView
+        android:id="@+id/user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Guest"
+        android:textSize="@dimen/text_pt_64"
+        android:layout_marginTop="@dimen/drawer_header_top_margin"
+        android:layout_marginBottom="@dimen/drawer_header_middle_margin"
+        android:layout_centerHorizontal="true" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/user_name"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_marginBottom="5dp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="12dp"
+            android:adjustViewBounds="true"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/icon_logout_small"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="로그인"
+            android:id="@+id/login_logout"
+            android:gravity="center_vertical"
+            android:padding="5dp"
+            android:textSize="@dimen/text_pt_44"
+            android:layout_marginRight="10dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="12dp"
+            android:adjustViewBounds="true"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/icon_mypage"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="마이페이지"
+            android:id="@+id/my_page"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/text_pt_44"
+            android:padding="5dp" />
+    </LinearLayout>
+
+</RelativeLayout>

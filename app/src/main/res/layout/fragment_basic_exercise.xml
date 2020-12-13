@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.hilifecare.ui.main.MainActivity"
+    tools:ignore="MissingPrefix">
+
+    <LinearLayout
+        android:id="@+id/program_button"
+        android:layout_width="@dimen/main_button_size"
+        android:layout_height="@dimen/main_button_size"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/bt_program"
+        android:gravity="center">
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:padding="8dp"
+            android:src="@drawable/icon_bt_program"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="PROGRAM"
+            android:textSize="@dimen/text_pt_95"
+            android:gravity="center"
+            fontPath="fonts/Aero-Matics-Display-Regular.ttf"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="운동 프로그램"
+            android:textSize="@dimen/text_pt_52"
+            android:gravity="center"
+            fontPath="fonts/NotoSansKR-Medium-Hestia.otf"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/individual_program_button"
+        android:layout_width="@dimen/main_button_size"
+        android:layout_height="@dimen/main_button_size"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/program_button"
+        android:layout_marginBottom="?attr/actionBarSize"
+        android:background="@drawable/bt_individual_program"
+        android:gravity="center">
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="8dp"
+            android:src="@drawable/icon_bt_individual_program"/>
+
+        <TextView
+            android:id="@+id/textView3"
+            fontPath="fonts/Aero-Matics-Display-Regular.ttf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="INDIVIDUAL VIDEO"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_pt_72" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="개별 운동영상"
+            android:textSize="@dimen/text_pt_52"
+            android:gravity="center"
+            fontPath="fonts/NotoSansKR-Medium-Hestia.otf"/>
+    </LinearLayout>
+</RelativeLayout>

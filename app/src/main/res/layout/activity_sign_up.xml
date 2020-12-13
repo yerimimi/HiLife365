@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="2"
+    android:id="@+id/activity_sign_up">
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/toolbar_signup"/>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="bottom"
+        android:layout_marginTop="@dimen/button_height"
+        android:layout_below="@+id/title">
+
+        <!--<com.hilifecare.ui.view.CustomEditText-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:layout_marginLeft="@dimen/signup_edittext_margin_lr"-->
+            <!--android:layout_marginRight="@dimen/signup_edittext_margin_lr"-->
+            <!--android:drawableRight="@drawable/icon_check_uncheck"-->
+            <!--android:hint="Name"-->
+            <!--android:textSize="@dimen/text_pt_52"-->
+            <!--android:id="@+id/name_edittext"/>-->
+
+        <com.hilifecare.ui.view.CustomEditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="@dimen/signup_edittext_margin_lr"
+            android:layout_marginRight="@dimen/signup_edittext_margin_lr"
+            android:drawableRight="@drawable/icon_check_uncheck"
+            android:hint="E-mail"
+            android:textSize="@dimen/text_pt_52"
+            android:inputType="textEmailAddress"
+            android:id="@+id/email_edittext"/>
+
+        <com.hilifecare.ui.view.CustomEditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="@dimen/signup_edittext_margin_lr"
+            android:layout_marginRight="@dimen/signup_edittext_margin_lr"
+            android:layout_marginBottom="10dp"
+            android:drawableRight="@drawable/icon_check_uncheck"
+            android:hint="Password"
+            android:textSize="@dimen/text_pt_52"
+            android:inputType="textPassword"
+            android:id="@+id/pw_edittext"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center">
+        <Button
+            android:layout_width="@dimen/button_width"
+            android:layout_height="wrap_content"
+            android:text="Sign Up"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_pt_60"
+            android:id="@+id/signup_button"
+            android:background="@drawable/bg_button"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"/>
+    </LinearLayout>
+
+</LinearLayout>
