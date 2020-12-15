@@ -69,7 +69,6 @@ public class ProgramConstructionAdapter extends BaseExpandableListAdapter {
         Iterator<Map.Entry<String, Integer>> iterator = set.iterator();
         return iterator.next();
     }
-
     @Override
     public long getGroupId(int groupPosition) {
         return groupPosition;
