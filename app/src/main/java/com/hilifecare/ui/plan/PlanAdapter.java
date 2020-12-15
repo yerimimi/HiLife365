@@ -31,6 +31,7 @@ public class PlanAdapter extends ArrayAdapter<Plan> {
         mInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
+
     @NonNull
     @Override
     public View getView(int position, View v, ViewGroup parent) {

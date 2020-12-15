@@ -3,35 +3,148 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:padding="20dp"
+    android:orientation="vertical"
     tools:ignore="MissingPrefix">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="6">
 
         <TextView
-            android:id="@+id/exercise_name"
-            fontPath="fonts/NotoSansKR-Bold-Hestia.otf"
-            android:layout_width="match_parent"
+            android:id="@+id/plan_add_count"
+            fontPath="fonts/Aero-Matics-Display-Bold.ttf"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="left"
-            android:text="스쿼트"
-            android:textSize="@dimen/text_pt_60" />
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="1"
+            android:textColor="@color/colorText"
+            android:textSize="32dp" />
 
-        <TextView
-            android:id="@+id/exercise_explain"
-            fontPath="fonts/NotoSansKR-Bold-Hestia.otf"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="left"
-            android:text="스쿼트설명"
-            android:textSize="@dimen/text_pt_60" />
+            android:layout_gravity="center"
+            android:layout_weight="3"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/plan_add_name"
+                fontPath="fonts/NotoSansKR-Medium-Hestia.otf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:padding="5dp"
+                android:text="squart"
+                android:textColor="@color/colorBlackHalf"
+                android:textSize="@dimen/text_pt_60" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/icon_clock" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp">
+
+                    <TextView
+                        android:id="@+id/plan_add_exercise_time"
+                        fontPath="fonts/Aero-Matics-Display-Regular.ttf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="1"
+                        android:textColor="@color/colorPurpleBg"
+                        android:textSize="@dimen/text_pt_60" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="분 운동"
+                        android:textColor="@color/colorPurpleBg" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp">
+
+                    <TextView
+                        android:id="@+id/plan_add_rest_time"
+                        fontPath="fonts/Aero-Matics-Display-Regular.ttf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="2"
+                        android:textColor="@color/colorPurpleBg"
+                        android:textSize="@dimen/text_pt_60" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="분 휴식"
+                        android:textColor="@color/colorPurpleBg" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:layout_width="0dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/plan_add_set_count"
+                    fontPath="fonts/Aero-Matics-Display-Bold.ttf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="3"
+                    android:textSize="@dimen/text_pt_85"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="SET"
+                    android:textSize="@dimen/text_pt_72"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
     </LinearLayout>
-
 </LinearLayout>

@@ -106,31 +106,12 @@
         android:textColor="@android:color/white"
         android:textSize="@dimen/text_pt_44" />
 
-    <ScrollView
+    <ListView
+        android:id="@+id/user_plan_add_listview"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:scrollbarStyle="outsideOverlay"
-        android:scrollbars="vertical">
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        tools:listitem="@layout/plan_add_item"></ListView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ListView
-                android:id="@+id/user_plan_add_listview"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/textView"
-                tools:listitem="@layout/exercise_list_child"></ListView>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorTextLight" />
-        </LinearLayout>
-    </ScrollView>
 
 </LinearLayout>
