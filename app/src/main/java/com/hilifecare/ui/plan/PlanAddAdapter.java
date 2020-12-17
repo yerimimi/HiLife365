@@ -40,6 +40,7 @@ public class PlanAddAdapter extends BaseAdapter {
             viewHolder.tv_childExTime = (TextView) v.findViewById(R.id.plan_add_exercise_time);
             viewHolder.tv_childRsTime = (TextView) v.findViewById(R.id.plan_add_rest_time);
             viewHolder.tv_childSetCount = (TextView) v.findViewById(R.id.plan_add_set_count);
+            viewHolder.tv_childExCount = (TextView) v.findViewById(R.id.plan_add_exercise_count);
             v.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
@@ -50,6 +51,7 @@ public class PlanAddAdapter extends BaseAdapter {
         viewHolder.tv_childRsTime.setText("2");
         viewHolder.tv_childSetCount.setText("3");
         viewHolder.tv_childName.setText(eiList.get(position).getName());
+        viewHolder.tv_childExCount.setText(eiList.get(position).getSuggestedPerformedNoMax().toString());
         return v;
     }
 
@@ -74,6 +76,7 @@ public class PlanAddAdapter extends BaseAdapter {
         public TextView tv_childExTime;
         public TextView tv_childRsTime;
         public TextView tv_childSetCount;
+        public TextView tv_childExCount;
     }
 
     public List<HiExerciseInfo> getEiList() {

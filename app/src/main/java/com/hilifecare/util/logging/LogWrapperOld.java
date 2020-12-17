@@ -15,8 +15,8 @@ import java.util.logging.Logger;
 
 public class LogWrapperOld {
     private static final String TAG = "LogWrapper";
-    private static final int LOG_FILE_SIZE_LIMIT = 1024 * 1024 * 10;
-    private static final int LOG_FILE_MAX_COUNT = 100;
+    private static final int LOG_FILE_SIZE_LIMIT = 1024 * 500;
+    private static final int LOG_FILE_MAX_COUNT = 1000;
     private static final String LOG_FILE_NAME = "HyoilFileLog_%g.txt";
     private static final SimpleDateFormat formatter =
             new SimpleDateFormat("MMddHHmmss: ", Locale.getDefault());

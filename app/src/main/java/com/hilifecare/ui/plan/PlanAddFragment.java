@@ -58,6 +58,8 @@ public class PlanAddFragment extends BaseFragment<PlanPresenter> {
 
     @OnClick({R.id.plan_add_button})
     void planAdd() {
+        ResponseStopwatch.getInstance().reset();
+
         HiExerciseFilterInput filter = new HiExerciseFilterInput();
         HiUserInfo userInfo = new HiUserInfo();
 
@@ -68,9 +70,9 @@ public class PlanAddFragment extends BaseFragment<PlanPresenter> {
         try{
             userInfo.sleepingMinutes = Integer.valueOf(sleeping_time_edittext.getText().toString());
         }catch (NumberFormatException e){
-            userInfo.sleepingMinutes = Integer.valueOf(7); // TODO: temp
+            userInfo.sleepingMinutes = Integer.valueOf(480); // TODO: temp
         }catch (Exception e){
-            userInfo.sleepingMinutes = Integer.valueOf(7);
+            userInfo.sleepingMinutes = Integer.valueOf(480);
         }
 
         ResponseStopwatch.getInstance().reset();
@@ -78,8 +80,11 @@ public class PlanAddFragment extends BaseFragment<PlanPresenter> {
         List<HiExerciseInfo> inputEiList = new ArrayList<HiExerciseInfo>();
         HiExerciseInfo tmpEi;
         for (HiExercise item : eList) {
-            tmpEi = HiExerciseDbForJavaCode.getInstance().toExerciseInfoFrom(item);
-            inputEiList.add(tmpEi);
+            // 버티기 운동이 아닌 운동만 추출
+            if (item.getPerformedNoMax() > 0) {
+                tmpEi = HiExerciseDbForJavaCode.getInstance().toExerciseInfoFrom(item);
+                inputEiList.add(tmpEi);
+            }
         }
 
         int countToFilter = 6;
@@ -134,6 +139,12 @@ public class PlanAddFragment extends BaseFragment<PlanPresenter> {
 
         // Adjust tool weight
         HiExerciseIntensityAdjuster.adjustToolWeight(suggestedList, userInfo);
+
+        // Reflect sleeping time
+        HiExerciseIntensityAdjuster.reflectSleepingMinutes(suggestedList,480, 480);
+
+        // Reflect age
+        HiExerciseIntensityAdjuster.reflectUserAge(suggestedList, 30);
 
         return suggestedList;
     }
