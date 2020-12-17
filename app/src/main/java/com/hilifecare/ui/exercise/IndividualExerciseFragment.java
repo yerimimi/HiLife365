@@ -182,14 +182,14 @@ public class IndividualExerciseFragment extends BaseFragment<IndividualExerciseP
     }
 
     @Override
-    public void onStart() {
-        ScreenStopwatch.getInstance().printElapsedTimeLog("IndivisualExerciseFragment");
-        super.onStart();
+    public void onResume() {
+        ScreenStopwatch.getInstance().printElapsedTimeLog(getClass().getSimpleName());
+        super.onResume();
     }
 
     @Override
     public void onPause(){
-        ScreenStopwatch.getInstance().reset();
+        ScreenStopwatch.getInstance().printResetTimeLog(getClass().getSimpleName());
         super.onPause();
     }
 

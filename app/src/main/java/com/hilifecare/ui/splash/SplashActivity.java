@@ -58,8 +58,9 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
+    public void onResume() {
+        ScreenStopwatch.getInstance().printElapsedTimeLog(getClass().getSimpleName());
+        super.onResume();
     }
 
     @Override
@@ -73,7 +74,7 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
     @Override
     protected void onPause() {
         super.onPause();
-        ScreenStopwatch.getInstance().reset();
+        ScreenStopwatch.getInstance().printResetTimeLog(getClass().getSimpleName());
     }
 
     private void onFirebaseLoginOrRegister(){

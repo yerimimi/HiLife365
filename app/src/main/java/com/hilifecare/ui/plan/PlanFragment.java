@@ -153,14 +153,16 @@ public class PlanFragment extends BaseFragment<PlanPresenter> implements PlanVie
     }*/
 
     @Override
-    public void onStart() {
-        ScreenStopwatch.getInstance().printElapsedTimeLog("PlanFragment");
-        super.onStart();
+    public void onResume() {
+        ScreenStopwatch.getInstance().printElapsedTimeLog(getClass().getSimpleName());
+        super.onResume();
     }
 
     @Override
     public void onPause(){
-        ScreenStopwatch.getInstance().reset();
+
+        ScreenStopwatch.getInstance().printResetTimeLog(getClass().getSimpleName());
+
         super.onPause();
     }
 }

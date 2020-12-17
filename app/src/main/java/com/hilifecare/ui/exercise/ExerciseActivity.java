@@ -151,6 +151,8 @@ public class ExerciseActivity extends BaseActivity<ExercisePresenter> implements
     @Override
     protected void onResume() {
         super.onResume();
+        ScreenStopwatch.getInstance().printElapsedTimeLog(getClass().getSimpleName());
+
         SharedPreferences preferences = getPreferences(MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         positionState = preferences.getInt("player_position", 0);
@@ -214,13 +216,12 @@ public class ExerciseActivity extends BaseActivity<ExercisePresenter> implements
 
     @Override
     protected void onStart() {
-        ScreenStopwatch.getInstance().printElapsedTimeLog("ExerciseActivity"); // 다른 화면이 나타날 때
         super.onStart();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        ScreenStopwatch.getInstance().reset(); // 현재 화면이 없어질 때
+        ScreenStopwatch.getInstance().printResetTimeLog(getClass().getSimpleName());
     }
 }

@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 
 import com.hilifecare.di.HasComponent;
 import com.hilifecare.model.UserInfo;
-import com.hilifecare.util.logging.ScreenStopwatch;
 
 import butterknife.ButterKnife;
 import nucleus.view.NucleusSupportFragment;
@@ -40,18 +39,18 @@ public abstract class BaseFragment<P extends BasePresenter> extends NucleusSuppo
         setPresenterFactory(getPresenterFactory());
     }
 
-    @CallSuper
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
-
-    @CallSuper
-    @Override
-    public void onPause() {
-        super.onPause();
-        ScreenStopwatch.getInstance().reset();
-    }
+//    @CallSuper
+//    @Override
+//    public void onPause() {
+//        super.onPause();
+//
+//        ScreenStopwatch.getInstance().printResetTimeLog(getClass().getSimpleName());
+//    }
+//    @Override
+//    public void onResume() {
+//        ScreenStopwatch.getInstance().printElapsedTimeLog(getClass().getSimpleName());
+//        super.onResume();
+//    }
 
     @CallSuper
     @Override

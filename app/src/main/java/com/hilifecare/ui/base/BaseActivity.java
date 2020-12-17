@@ -8,7 +8,6 @@ import com.crashlytics.android.Crashlytics;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.hilifecare.model.UserInfo;
-import com.hilifecare.util.logging.ScreenStopwatch;
 
 import butterknife.ButterKnife;
 import io.fabric.sdk.android.Fabric;
@@ -72,9 +71,16 @@ public abstract class BaseActivity<P extends Presenter> extends NucleusAppCompat
     public void setmDeviceAddress(String mDeviceAddress) { this.mDeviceAddress = mDeviceAddress; }
     public String getmDeviceAddress() { return mDeviceAddress; }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        ScreenStopwatch.getInstance().reset(); // 현재 화면이 없어질 때
-    }
+//    @Override
+//    protected void onResume() {
+//        ScreenStopwatch.getInstance().printElapsedTimeLog(getClass().getSimpleName());
+//        super.onResume();
+//    }
+//
+//
+//    protected void onPause() {
+//        super.onPause();
+//
+//        ScreenStopwatch.getInstance().printResetTimeLog(getClass().getSimpleName());
+//    }
 }

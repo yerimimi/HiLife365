@@ -148,6 +148,8 @@ public class HeartRateActivity extends BaseActivity<HeartRatePresenter> implemen
     @Override
     protected void onResume() {
         super.onResume();
+        ScreenStopwatch.getInstance().printElapsedTimeLog(getClass().getSimpleName());
+
         registerReceiver(mGattUpdateReceiver, makeGattUpdateIntentFilter());
         if (mBluetoothLeService != null) {
             final boolean result = mBluetoothLeService.connect(getmDeviceAddress());
@@ -682,13 +684,12 @@ public class HeartRateActivity extends BaseActivity<HeartRatePresenter> implemen
 
     @Override
     protected void onStart() {
-        ScreenStopwatch.getInstance().printElapsedTimeLog("HeartRateActivity"); // 다른 화면이 나타날 때
         super.onStart();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        ScreenStopwatch.getInstance().reset(); // 현재 화면이 없어질 때
+        ScreenStopwatch.getInstance().printResetTimeLog(getClass().getSimpleName());
     }
 }

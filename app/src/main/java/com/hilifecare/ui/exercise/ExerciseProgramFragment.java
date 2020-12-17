@@ -47,14 +47,14 @@ public class ExerciseProgramFragment extends Fragment{
 //    void goLevelTestResult() {}
 
     @Override
-    public void onStart() {
-        ScreenStopwatch.getInstance().printElapsedTimeLog("ExerciseProgramFragment");
-        super.onStart();
+    public void onResume() {
+        ScreenStopwatch.getInstance().printElapsedTimeLog(getClass().getSimpleName());
+        super.onResume();
     }
 
     @Override
     public void onPause(){
-        ScreenStopwatch.getInstance().reset();
+        ScreenStopwatch.getInstance().printResetTimeLog(getClass().getSimpleName());
         super.onPause();
     }
 

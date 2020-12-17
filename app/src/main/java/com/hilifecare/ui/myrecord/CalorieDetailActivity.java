@@ -165,14 +165,14 @@ public class CalorieDetailActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStart() {
-        ScreenStopwatch.getInstance().printElapsedTimeLog("CalorieDetailActivity"); // 다른 화면이 나타날 때
-        super.onStart();
+    protected void onResume() {
+        ScreenStopwatch.getInstance().printElapsedTimeLog(getClass().getSimpleName());
+        super.onResume();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        ScreenStopwatch.getInstance().reset(); // 현재 화면이 없어질 때
+        ScreenStopwatch.getInstance().printResetTimeLog(getClass().getSimpleName());
     }
 }

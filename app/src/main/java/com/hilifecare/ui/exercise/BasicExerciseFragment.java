@@ -46,14 +46,14 @@ public class BasicExerciseFragment extends Fragment{
     }
 
     @Override
-    public void onStart() {
-        ScreenStopwatch.getInstance().printElapsedTimeLog("BasicExerciseFragment");
-        super.onStart();
+    public void onResume() {
+        ScreenStopwatch.getInstance().printElapsedTimeLog(getClass().getSimpleName());
+        super.onResume();
     }
 
     @Override
     public void onPause(){
        super.onPause();
-       ScreenStopwatch.getInstance().reset();
+       ScreenStopwatch.getInstance().printResetTimeLog(getClass().getSimpleName());
     }
 }

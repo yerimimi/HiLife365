@@ -16,22 +16,27 @@ public abstract class AbstractStopwatch {
         return elapsedMillis;
     }
 
-    public String getElapsedTimeString() {
-        double seconds = (double) getElapsedTime() / 1000.0;
-        if (seconds < 1.0) {
-            return String.format("%.0f ms", seconds * 1000);
-        } else {
-            return String.format("%.2f s", seconds);
-        }
+//    public String getElapsedTimeString() {
+//        double seconds = (double) getElapsedTime() / 1000.0;
+//        if (seconds < 1.0) {
+//            return String.format("%.0f ms", seconds * 1000);
+//        } else {
+//            return String.format("%.2f s", seconds);
+//        }
+//    }
+
+    public void printResetTimeLog(String title) {
+        reset();
+        //LogWrapperOld.v(getTag(), title + " ET : " + "reset Timer");
     }
 
     public void printElapsedTimeLog(String title) {
-        LogWrapperOld.v(getTag(), title + " ET : " + getElapsedTimeString());
+        LogWrapperOld.v(getTag(), title + " ET : " + getElapsedTime());
     }
 
     @Override
     public String toString() {
-        return getTag() + ": " + getElapsedTimeString();
+        return getTag() + ": " + getElapsedTime();
     }
 
     abstract protected String getTag();

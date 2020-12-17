@@ -30,7 +30,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
-import android.transition.Scene;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -42,10 +41,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hilifecare.R;
+import com.hilifecare.util.logging.ScreenStopwatch;
 
 import java.util.ArrayList;
-
-import com.hilifecare.util.logging.ScreenStopwatch;
 
 /**
  * Activity for scanning and displaying available Bluetooth LE devices.
@@ -168,6 +166,7 @@ public class DeviceScanActivity extends ListActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        ScreenStopwatch.getInstance().printElapsedTimeLog(getClass().getSimpleName());
 
         // Ensures Bluetooth is enabled on the device.  If Bluetooth is not currently enabled,
         // fire an intent to display a dialog asking the user to grant permission to enable it.
@@ -198,7 +197,7 @@ public class DeviceScanActivity extends ListActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        ScreenStopwatch.getInstance().reset();
+        ScreenStopwatch.getInstance().printResetTimeLog(getClass().getSimpleName());
         scanLeDevice(false);
         mLeDeviceListAdapter.clear();
     }
@@ -329,7 +328,6 @@ public class DeviceScanActivity extends ListActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        ScreenStopwatch.getInstance().printElapsedTimeLog("DeviceScanActivity");
     }
 
 }

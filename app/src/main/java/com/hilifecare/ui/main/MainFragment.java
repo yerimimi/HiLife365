@@ -52,14 +52,15 @@ public class MainFragment extends BaseFragment<EmptyPresenter> {
     }
 
     @Override
-    public void onStart() {
-        ScreenStopwatch.getInstance().printElapsedTimeLog("MainFragment"); // 다른 화면이 나타날 때
-        super.onStart();
+    public void onResume() {
+        ScreenStopwatch.getInstance().printElapsedTimeLog(getClass().getSimpleName());
+        super.onResume();
     }
 
     @Override
     public void onPause(){
-        ScreenStopwatch.getInstance().reset();
+
+        ScreenStopwatch.getInstance().printResetTimeLog(getClass().getSimpleName());
         super.onPause();
     }
 }

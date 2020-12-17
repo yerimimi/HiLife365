@@ -15,7 +15,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.hilifecare.R;
 import com.hilifecare.di.ActivityScope;
@@ -28,18 +27,25 @@ import com.hilifecare.ui.emg.retrofit2.entity.OneM2MCinLatestRoot;
 import com.hilifecare.util.logging.EmgStopwatch;
 import com.hilifecare.util.logging.ScreenStopwatch;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.hilifecare.ui.emg.le.attr.EmgGattAttr.*;
+import static com.hilifecare.ui.emg.le.attr.EmgGattAttr.ACTION_BEACON_DATA;
+import static com.hilifecare.ui.emg.le.attr.EmgGattAttr.ACTION_DATA_AVAILABLE;
+import static com.hilifecare.ui.emg.le.attr.EmgGattAttr.ACTION_FIND_DEVICE;
+import static com.hilifecare.ui.emg.le.attr.EmgGattAttr.ACTION_GATT_CONNECTED;
+import static com.hilifecare.ui.emg.le.attr.EmgGattAttr.ACTION_GATT_DISCONNECTED;
+import static com.hilifecare.ui.emg.le.attr.EmgGattAttr.ACTION_GATT_SERVICES_DISCOVERED;
+import static com.hilifecare.ui.emg.le.attr.EmgGattAttr.EXTRA_BEACON_DATA;
+import static com.hilifecare.ui.emg.le.attr.EmgGattAttr.EXTRA_DATA_DEVICE_ADDRESS;
+import static com.hilifecare.ui.emg.le.attr.EmgGattAttr.EXTRA_DATA_DEVICE_NAME;
+import static com.hilifecare.ui.emg.le.attr.EmgGattAttr.EXTRA_EMG_DATA;
+import static com.hilifecare.ui.emg.le.attr.EmgGattAttr.UART_SERVICE_UUID;
+import static com.hilifecare.ui.emg.le.attr.EmgGattAttr.UART_TX_CCCD_UUID;
+import static com.hilifecare.ui.emg.le.attr.EmgGattAttr.UART_TX_CHAR_UUID;
 
 @ActivityScope
 public class EmgActivity extends AppCompatActivity {
@@ -84,6 +90,8 @@ public class EmgActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        ScreenStopwatch.getInstance().printElapsedTimeLog(getClass().getSimpleName());
+
         Intent gattServiceIntent = new Intent(this, EmgService.class);
         boolean res = bindService(gattServiceIntent, mServiceConnection, Context.BIND_AUTO_CREATE);
         Log.i(tag, "bindService res : " + res);
@@ -93,7 +101,7 @@ public class EmgActivity extends AppCompatActivity {
     @Override
     public void onPause() {
         super.onPause();
-        ScreenStopwatch.getInstance().reset();
+        ScreenStopwatch.getInstance().printResetTimeLog(getClass().getSimpleName());
         Log.i(tag, "onPause():: call");
         unregisterReceiver(mGattUpdateReceiver);
         unbindService(mServiceConnection);
@@ -206,6 +214,5 @@ public class EmgActivity extends AppCompatActivity {
 
     protected void onStart(){
         super.onStart();
-        ScreenStopwatch.getInstance().printElapsedTimeLog("EmgActivity");
     }
 }

@@ -67,5 +67,6 @@ public class LogWrapperOld {
             //logger.log(Level.INFO, String.format("V/%s(%d): %s\n", tag, Binder.getCallingPid(), msg));
         }
         Log.v(tag, msg);
+        fileHandler.flush();
     }
 }

@@ -109,14 +109,16 @@ public class PlanAddFragment extends BaseFragment<PlanPresenter> {
 
 
     @Override
-    public void onStart() {;
-        ScreenStopwatch.getInstance().printElapsedTimeLog("PlanAddFragment");
-        super.onStart();
+    public void onResume() {;
+        ScreenStopwatch.getInstance().printElapsedTimeLog(getClass().getSimpleName());
+        super.onResume();
     }
 
     @Override
     public void onPause() {
-        ScreenStopwatch.getInstance().reset();
+
+        ScreenStopwatch.getInstance().printResetTimeLog(getClass().getSimpleName());
+
         super.onPause();
     }
 

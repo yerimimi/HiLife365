@@ -7,7 +7,6 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -36,11 +35,9 @@ import com.hilifecare.ui.myrecord.MyRecordFragment;
 import com.hilifecare.ui.plan.PlanAddFragment;
 import com.hilifecare.ui.plan.PlanDetailActivity;
 import com.hilifecare.ui.plan.PlanFragment;
-import com.hilifecare.ui.program.ProgramActivity;
 import com.hilifecare.ui.setting.SettingActivity;
 import com.hilifecare.ui.view.CustomToolbar;
 import com.hilifecare.util.logging.ScreenStopwatch;
-import com.hyoil.hipreslogic.filter.HiExerciseFilter;
 
 import java.util.ArrayList;
 
@@ -136,6 +133,8 @@ public class MainActivity extends BaseActivity<MainPresenter>
     @Override
     public void onResume() {
         super.onResume();
+            ScreenStopwatch.getInstance().printElapsedTimeLog(getClass().getSimpleName());
+
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         try {
@@ -321,13 +320,10 @@ public class MainActivity extends BaseActivity<MainPresenter>
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-    }
-
-    @Override
     protected void onPause() {
         super.onPause();
-        ScreenStopwatch.getInstance().reset(); // 현재 화면이 없어질 때
+
+        ScreenStopwatch.getInstance().printResetTimeLog(getClass().getSimpleName());
+
     }
 }

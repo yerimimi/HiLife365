@@ -42,6 +42,7 @@ import com.hilifecare.di.components.DaggerDeviceControlComponent;
 import com.hilifecare.di.components.DeviceControlComponent;
 import com.hilifecare.di.modules.DeviceControlModule;
 import com.hilifecare.ui.base.BaseActivity;
+import com.hilifecare.util.logging.ScreenStopwatch;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -50,10 +51,6 @@ import java.util.List;
 import javax.inject.Inject;
 
 import nucleus.factory.PresenterFactory;
-
-import com.hilifecare.ui.emg.le.entity.Emg;
-import com.hilifecare.util.logging.HrStopwatch;
-import com.hilifecare.util.logging.ScreenStopwatch;
 
 
 /**
@@ -222,6 +219,8 @@ public class DeviceControlActivity extends BaseActivity<DeviceControlPresenter> 
     @Override
     protected void onResume() {
         super.onResume();
+        ScreenStopwatch.getInstance().printElapsedTimeLog(getClass().getSimpleName());
+
 //        registerReceiver(mGattUpdateReceiver, makeGattUpdateIntentFilter());
         if (mBluetoothLeService != null) {
             final boolean result = mBluetoothLeService.connect(mDeviceAddress);
@@ -360,12 +359,12 @@ public class DeviceControlActivity extends BaseActivity<DeviceControlPresenter> 
     @Override
     protected void onStart() {
         super.onStart();
-        ScreenStopwatch.getInstance().printElapsedTimeLog("DeviceControlActivity");
     }
 
     @Override
     protected void onPause() {
-        ScreenStopwatch.getInstance().reset();
+
+        ScreenStopwatch.getInstance().printResetTimeLog(getClass().getSimpleName());
         super.onPause();
     }
 }

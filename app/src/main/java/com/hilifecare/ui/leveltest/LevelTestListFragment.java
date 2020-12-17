@@ -186,13 +186,16 @@ public class LevelTestListFragment extends BaseFragment<LevelTestListPresenter> 
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
+    public void onResume() {
+        ScreenStopwatch.getInstance().printElapsedTimeLog(getClass().getSimpleName());
+        super.onResume();
     }
 
     @Override
     public void onPause(){
-        ScreenStopwatch.getInstance().reset();
+
+        ScreenStopwatch.getInstance().printResetTimeLog(getClass().getSimpleName());
+
         super.onPause();
     }
 }
