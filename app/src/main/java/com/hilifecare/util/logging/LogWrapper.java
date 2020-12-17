@@ -16,12 +16,17 @@ import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
 public class LogWrapper {
-    private static final String LOG_FILE_NAME = "HyoilFileLog_%g.txt";
+    private static final String LOG_FILE_NAME = "HyoilFileLog.txt";
     private static Logger logger;
     private static FileHandler fileHandler;
 
     static {
         try {
+            //Log.i("LogWrapper","dir: " + Context.getFilesDir().getAbsolutePath());
+            Log.i("LogWrapper","state: " + Environment.getExternalStorageState());
+            Log.i("LogWrapper","dir: " + Environment.getExternalStorageDirectory());
+            Log.i("LogWrapper","dir2: " + Environment.getExternalStorageDirectory() + File.separator + LOG_FILE_NAME);
+            Log.i("LogWrapper","state2: " + Environment.getExternalStorageState(new File(Environment.getExternalStorageDirectory() + File.separator + LOG_FILE_NAME)));
             fileHandler = new FileHandler(Environment.getExternalStorageDirectory() + File.separator + LOG_FILE_NAME, true);
             fileHandler.setFormatter(new java.util.logging.Formatter() {
                 @Override
@@ -36,6 +41,12 @@ public class LogWrapper {
             logger.setLevel(Level.ALL);
             logger.setUseParentHandlers(false);
         } catch (IOException e) {
+            StackTraceElement[] stack = e.getStackTrace();
+            for (StackTraceElement elem : stack)
+            {
+                Log.i("STACK","" + elem.toString());
+            }
+            Log.i("LogWrapper","err: " + e.getStackTrace());
         }
     }
 

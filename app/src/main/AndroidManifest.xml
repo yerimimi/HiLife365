@@ -33,6 +33,7 @@
             android:theme="@style/SplashStyle">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -169,7 +170,14 @@
             android:name=".ui.emg.le.service.EmgService"
             android:enabled="true" />
         <activity android:name=".ui.emg.EmgActivity">
+	    </activity>
+        <activity android:name=".ui.test.ListViewActivity"
+            android:screenOrientation="portrait">
+<!--            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
         </activity>
     </application>
 

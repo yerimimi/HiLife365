@@ -37,7 +37,7 @@ public abstract class AbstractStopwatch {
     }
 
     public void printElapsedTimeLog(String title) {
-        Log.i(getTag(), title + " elapsed time: " + getElapsedTimeString());
+        LogWrapper.v(getTag(), title + " elapsed time: " + getElapsedTimeString());
     }
 
     @Override
