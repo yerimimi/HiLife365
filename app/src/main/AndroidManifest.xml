@@ -6,24 +6,27 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!-- Leak canary needs access to External storage to save heap dumps -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
 
-    <uses-feature android:name="android.hardware.bluetooth_le" android:required="true"/>
-    <uses-permission android:name="android.permission.BLUETOOTH"/>
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-feature
+        android:name="android.hardware.bluetooth_le"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
-        android:hardwareAccelerated="false"
-        android:largeHeap="true"
         android:name=".application.App"
         android:allowBackup="true"
+        android:hardwareAccelerated="false"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
@@ -34,21 +37,23 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="io.fabric.ApiKey"
-            android:value="a61b187ba82228313ff5594ee4caf7ab2cac6e20"
-            />
+            android:value="a61b187ba82228313ff5594ee4caf7ab2cac6e20" />
+
         <activity
             android:name=".ui.main.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MainStyle">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </activity>
         <activity
@@ -90,12 +95,16 @@
             android:name=".ui.plan.PlanDetailActivity"
             android:label="@string/plan_detail_name"
             android:screenOrientation="portrait"
-            android:theme="@style/PlanDetailStyle" >
+            android:theme="@style/PlanDetailStyle">
             <intent-filter>
-            <action android:name="android.intent.action.VIEW"/>
-            <category android:name="android.intent.category.BROWSABLE"/>
-            <category android:name="android.intent.category.DEFAULT"/>
-            <data android:scheme="hilife365" android:host="plandetail"/>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="plandetail"
+                    android:scheme="hilife365" />
             </intent-filter>
         </activity>
         <activity
@@ -103,10 +112,13 @@
             android:theme="@android:style/Theme.NoDisplay">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:host="plandetail" android:scheme="hilife365" />
+                <data
+                    android:host="plandetail"
+                    android:scheme="hilife365" />
             </intent-filter>
         </activity>
         <activity
@@ -157,27 +169,32 @@
             android:label="@string/myrecord_title"
             android:screenOrientation="portrait"
             android:theme="@style/MyRecordStyle" />
-        <activity android:name=".ui.myrecord.CalorieDetailActivity"
+        <activity
+            android:name=".ui.myrecord.CalorieDetailActivity"
             android:label="@string/calorie_title"
             android:screenOrientation="portrait"
-            android:theme="@style/MyRecordStyle"/>
+            android:theme="@style/MyRecordStyle" />
+        <activity
+            android:name=".ui.bluetooth.DeviceScanActivity"
+            android:label="@string/heartrate_title" />
+        <activity android:name=".ui.bluetooth.DeviceControlActivity" />
 
-        <activity android:name=".ui.bluetooth.DeviceScanActivity"
-            android:label="@string/heartrate_title"/>
-        <activity android:name=".ui.bluetooth.DeviceControlActivity"/>
-        <service android:name=".ui.bluetooth.BluetoothLeService" android:enabled="true"/>
+        <service
+            android:name=".ui.bluetooth.BluetoothLeService"
+            android:enabled="true" />
         <service
             android:name=".ui.emg.le.service.EmgService"
             android:enabled="true" />
-        <activity android:name=".ui.emg.EmgActivity">
-	    </activity>
-        <activity android:name=".ui.test.ListViewActivity"
-            android:screenOrientation="portrait">
-<!--            <intent-filter>
+
+        <activity android:name=".ui.emg.EmgActivity"></activity>
+        <activity android:name=".ui.test.ListViewActivity">
+        </activity>
+        <activity android:name=".ui.auth.PermissionReqActivity">
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
         </activity>
     </application>
 
