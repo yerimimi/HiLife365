@@ -1,6 +1,5 @@
 package com.hilifecare.ui.plan;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -51,7 +50,7 @@ public class PlanAddFragment extends BaseFragment<PlanPresenter> {
     EditText sleeping_time_edittext;
 
     List<HiExerciseInfo> eiList = new ArrayList<HiExerciseInfo>();
-    PlanProgramAdapter planProgramAdapter = null;
+    PlanAddAdapter planAddAdapter = null;
 
     public PlanAddFragment() {
     }
@@ -84,7 +83,7 @@ public class PlanAddFragment extends BaseFragment<PlanPresenter> {
 
         int countToFilter = 6;
         eiList = recommend(inputEiList, filter, countToFilter, userInfo);
-        planProgramAdapter.notifyDataSetChanged();
+        planAddAdapter.notifyDataSetChanged();
 
         Log.d("eiList: ", eiList.toString());
 
@@ -142,18 +141,18 @@ public class PlanAddFragment extends BaseFragment<PlanPresenter> {
         View v = super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_plan_add, container, false);
         ButterKnife.bind(this, view);
-        planProgramAdapter = new PlanProgramAdapter(eiList);
-        user_plan_add_listview.setAdapter(planProgramAdapter);
+        planAddAdapter = new PlanAddAdapter(eiList);
+        user_plan_add_listview.setAdapter(planAddAdapter);
         user_plan_add_listview.setOnItemClickListener(new PlanAddFragment.ListViewItemClickListener());
-        return v;
+        return view;
     }
 
     public void setListViewHeightBasedOnChildren(ListView eiList) {
         int desiredWidth = View.MeasureSpec.makeMeasureSpec(eiList.getWidth(), View.MeasureSpec.UNSPECIFIED);
         int totalHeight = 0;
         View view = null;
-        for (int i = 0; i < planProgramAdapter.getCount(); i++) {
-            view = planProgramAdapter.getView(i, view, eiList);
+        for (int i = 0; i < planAddAdapter.getCount(); i++) {
+            view = planAddAdapter.getView(i, view, eiList);
             if (i == 0)
                 view.setLayoutParams(new ViewGroup.LayoutParams(desiredWidth, ViewGroup.LayoutParams.WRAP_CONTENT));
 
@@ -161,7 +160,7 @@ public class PlanAddFragment extends BaseFragment<PlanPresenter> {
             totalHeight += view.getMeasuredHeight();
         }
         ViewGroup.LayoutParams params = eiList.getLayoutParams();
-        params.height = totalHeight + (eiList.getDividerHeight() * (planProgramAdapter.getCount() - 1));
+        params.height = totalHeight + (eiList.getDividerHeight() * (planAddAdapter.getCount() - 1));
     }
 
     private class ListViewItemClickListener implements AdapterView.OnItemClickListener

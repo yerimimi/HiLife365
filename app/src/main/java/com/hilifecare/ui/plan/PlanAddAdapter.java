@@ -21,11 +21,11 @@ import java.util.List;
  * Created by Administrator on 2017-02-21.
  */
 
-public class PlanProgramAdapter extends BaseAdapter {
+public class PlanAddAdapter extends BaseAdapter {
     private List<HiExerciseInfo> eiList = null;
 
 
-    public PlanProgramAdapter(List<HiExerciseInfo> objects) {
+    public PlanAddAdapter(List<HiExerciseInfo> objects) {
         eiList = objects;
     }
 
