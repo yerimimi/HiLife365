@@ -49,6 +49,7 @@ public class PlanAddAdapter extends BaseAdapter {
         viewHolder.tv_childExTime.setText("1");
         viewHolder.tv_childRsTime.setText("2");
         viewHolder.tv_childSetCount.setText("3");
+        viewHolder.tv_childName.setText(eiList.get(position).getName());
         return v;
     }
 
