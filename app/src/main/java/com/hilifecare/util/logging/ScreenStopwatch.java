@@ -1,8 +1,5 @@
 package com.hilifecare.util.logging;
 
-import android.os.SystemClock;
-import android.util.Log;
-
 public class ScreenStopwatch extends AbstractStopwatch {
 
     private static ScreenStopwatch singleton = new ScreenStopwatch();
@@ -15,7 +12,7 @@ public class ScreenStopwatch extends AbstractStopwatch {
     }
 
     protected String getTag() {
-        return "ElapsedTime_2";
+        return "ET_2 ";
     }
 
 }

@@ -16,7 +16,7 @@ public class ResponseStopwatch extends AbstractStopwatch {
     }
 
     protected String getTag() {
-        return "ElapsedTime_5";
+        return "ET_5 ";
     }
 
 }

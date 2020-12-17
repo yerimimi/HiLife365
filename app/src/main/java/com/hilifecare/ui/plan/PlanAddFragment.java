@@ -17,7 +17,7 @@ import com.hilifecare.di.components.MainComponent;
 import com.hilifecare.model.HiExercise;
 import com.hilifecare.ui.base.BaseFragment;
 import com.hilifecare.util.data.HiExerciseDbForJavaCode;
-import com.hilifecare.util.logging.ResponseStopwatch;
+import com.hilifecare.util.logging.PrescriptionStopwatch;
 import com.hilifecare.util.logging.ScreenStopwatch;
 import com.hyoil.hipreslogic.filter.HiExerciseFilterInput;
 import com.hyoil.hipreslogic.info.HiExerciseInfo;
@@ -58,7 +58,7 @@ public class PlanAddFragment extends BaseFragment<PlanPresenter> {
 
     @OnClick({R.id.plan_add_button})
     void planAdd() {
-        ResponseStopwatch.getInstance().reset();
+        PrescriptionStopwatch.getInstance().reset();
 
         HiExerciseFilterInput filter = new HiExerciseFilterInput();
         HiUserInfo userInfo = new HiUserInfo();
@@ -75,7 +75,6 @@ public class PlanAddFragment extends BaseFragment<PlanPresenter> {
             userInfo.sleepingMinutes = Integer.valueOf(480);
         }
 
-        ResponseStopwatch.getInstance().reset();
         List<HiExercise> eList = HiExerciseDbForJavaCode.getInstance().getExerciseList();
         List<HiExerciseInfo> inputEiList = new ArrayList<HiExerciseInfo>();
         HiExerciseInfo tmpEi;
@@ -89,7 +88,7 @@ public class PlanAddFragment extends BaseFragment<PlanPresenter> {
 
         int countToFilter = 6;
         eiList = recommend(inputEiList, filter, countToFilter, userInfo);
-        ResponseStopwatch.getInstance().printElapsedTimeLog("ExercisePrescription");
+        PrescriptionStopwatch.getInstance().printElapsedTimeLog("ExercisePrescription");
         planAddAdapter.setEiList(eiList);
         planAddAdapter.notifyDataSetChanged();
 

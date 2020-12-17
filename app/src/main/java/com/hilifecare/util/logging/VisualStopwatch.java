@@ -16,7 +16,7 @@ public class VisualStopwatch extends AbstractStopwatch {
     }
 
     protected String getTag() {
-        return "ElapsedTime_3";
+        return "ET_3 ";
     }
 
 }
