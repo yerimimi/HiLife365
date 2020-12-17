@@ -2,19 +2,15 @@ package com.hilifecare.ui.plan;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hilifecare.R;
 import com.hyoil.hipreslogic.info.HiExerciseInfo;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,9 +21,7 @@ public class PlanAddAdapter extends BaseAdapter {
     private List<HiExerciseInfo> eiList = null;
 
 
-    public PlanAddAdapter(List<HiExerciseInfo> objects) {
-        eiList = objects;
-    }
+    public PlanAddAdapter() {}
 
     @NonNull
     @Override
@@ -59,7 +53,10 @@ public class PlanAddAdapter extends BaseAdapter {
     }
 
     public int getCount() {
-        return eiList.size();
+        if(eiList != null) {
+            return eiList.size();
+        }
+        return 0;
     }
 
     public long getItemId(int position) {
@@ -78,4 +75,11 @@ public class PlanAddAdapter extends BaseAdapter {
         public TextView tv_childSetCount;
     }
 
+    public List<HiExerciseInfo> getEiList() {
+        return eiList;
+    }
+
+    public void setEiList(List<HiExerciseInfo> eiList) {
+        this.eiList = eiList;
+    }
 }

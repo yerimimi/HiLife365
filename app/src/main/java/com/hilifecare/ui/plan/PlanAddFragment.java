@@ -49,7 +49,7 @@ public class PlanAddFragment extends BaseFragment<PlanPresenter> {
     @Bind(R.id.sleeping_time_edittext)
     EditText sleeping_time_edittext;
 
-    List<HiExerciseInfo> eiList = new ArrayList<HiExerciseInfo>();
+    List<HiExerciseInfo> eiList;
     PlanAddAdapter planAddAdapter = null;
 
     public PlanAddFragment() {
@@ -83,6 +83,7 @@ public class PlanAddFragment extends BaseFragment<PlanPresenter> {
 
         int countToFilter = 6;
         eiList = recommend(inputEiList, filter, countToFilter, userInfo);
+        planAddAdapter.setEiList(eiList);
         planAddAdapter.notifyDataSetChanged();
 
         Log.d("eiList: ", eiList.toString());
@@ -138,10 +139,10 @@ public class PlanAddFragment extends BaseFragment<PlanPresenter> {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = super.onCreateView(inflater, container, savedInstanceState);
+        super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_plan_add, container, false);
         ButterKnife.bind(this, view);
-        planAddAdapter = new PlanAddAdapter(eiList);
+        planAddAdapter = new PlanAddAdapter();
         user_plan_add_listview.setAdapter(planAddAdapter);
         user_plan_add_listview.setOnItemClickListener(new PlanAddFragment.ListViewItemClickListener());
         return view;
